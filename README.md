@@ -97,3 +97,81 @@ function manipulateStyles() {
   document.getElementById("headingElement").style.color = "blue";
 }
 ```
+
+**DOM and Event Fundamentals**
+
+# Primitive Types & Conditionals
+
+## JavaScript Values
+
+Basically In JavaScript values are of two categories.
+
+- Primitive Types
+- Reference Types
+
+### Primitive Types
+
+- Number
+- Boolean
+- String
+- Undefined, etc.
+
+| Primitive Type | Description                                                                                                                                            |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Number         | All the numbers are of Number type.                                                                                                                    |
+| Boolean        | Boolean values are either true or false.                                                                                                               |
+| String         | String is a stream of characters. The String should be enclosed with Single quotes, Double quotes, or Backticks.                                       |
+| Undefined      | If a value is not assigned to the variable, then it takes `undefined` as its value. In JS, `undefined` refers to the value that is not being assigned. |
+
+|
+
+### Operators
+
+#### typeof()
+
+The `typeof()` operator is used to find the type of value.
+
+```Javascript
+let a = 900;
+let b = 9.2;
+console.log(typeof(a));  // number
+console.log(typeof(b));  // number
+```
+
+```Javascript
+let isApproved = false;
+console.log(typeof(isApproved));
+console.log(typeof(true));
+```
+
+## Converting String to a Number
+
+In JavaScript, when we combine the number and string, it results in a string.
+
+The `parseInt()` function accepts a string and converts it into an integer.
+
+```Javascript
+let a = '20';
+console.log(typeof(a));  // string
+
+let b = parseInt(a);
+console.log(typeof(b));  // number
+```
+
+## Conditional Statements
+
+The Conditional Statement allows you to execute a block of code only when a specific condition is true.
+
+**If...Else Statement:**
+
+<b>Syntax:</b>
+
+```javascript
+if (conditionA) {
+  Block1;
+} else if (conditionB) {
+  Block2;
+} else {
+  Block3;
+}
+```
