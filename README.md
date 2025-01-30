@@ -282,3 +282,255 @@ Strict equal to (`===`): Strict equality compares two values for equality includ
 console.log(2 == '2');  // true
 console.log(2 === '2');  // false
 ```
+
+# Arrays & More DOM Manipulations
+
+## Data Structures
+
+Data Structures allow us to store and organize data efficiently. This makes us access and performs operations on the data smoothly.
+
+In JavaScript, we have built-in Data Structures like,
+
+- Arrays
+- Objects
+- Sets
+- Maps
+
+## Arrays
+
+An Array holds an ordered sequence of items
+
+### Creating an Array
+
+```Javascript
+let myArray = [5, "six", 2, 8.2]
+console.log(myArray) // [5, "six", 2, 8.2]
+```
+
+### Accessing an Array items
+
+```JavaScript
+let myArray = [5, "Six", 2, 8.2];
+
+console.log(myArray[0]); // 5
+
+console.log(myArray[1]); // six
+```
+
+### Modifying an Array items
+
+```JavaScript
+let myArray = [5, "Six", 2, 8.2];
+myArray[1] = 6;
+
+console.log(myArray) // [5, 6, 2, 8.2]
+```
+
+### Finding Array Length
+
+The `array.length` is used to find the number of items in the array.
+
+```Javascript
+let myArray = [5, "Six", 2, 8.2];
+let lengthOfArray = myArray.length;
+
+console.log(lengthOfArray) // 4
+```
+
+### Array Methods
+
+#### push()
+
+The `push()` method adds new items to the end of the array.
+
+```Javascript
+let myArray = [5, "six", 2, 8.2];
+myArray.push(true);
+
+console.log(myArray);  // [5, "six", 2, 8.2, true]
+```
+
+#### pop()
+
+The `pop()` method removes the last item of an array and returns that item.
+
+```Javascript
+let myArray = [5, "six", 2, 8.2];
+let lastItem = myArray.pop();
+
+console.log(myArray);  // [5, "six", 2]
+
+console.log(lastItem);  // 8.2
+```
+
+```Javascript
+let myArray = [5, "six", 2, 8.2];
+myArray[1] = 7;
+myArray.pop();
+myArray.push("seven");
+
+console.log(myArray);
+```
+
+## Functions
+
+### Function Declaration
+
+```Javascript
+function showMessage() {
+  console.log("Hello");
+}
+
+showMessage();
+```
+
+### Function Expression
+
+There is another syntax for creating a function which is called Function Expression.
+
+```Javascript
+let showMessage = function() {
+  console.log("Hello");
+};
+
+showMessage();
+```
+
+## More DOM Manipulations
+
+### Creating an HTML Element - `createElement()`
+
+```Javascript
+let h1Element = document.createElement("h1");
+h1Element.textContent = "Web Technologies";
+
+console.log(h1Element);  // <h1>Web Technologies</h1>
+```
+
+### Appending to an HTML Element - `appendChild()`
+
+**Appending to Document Body Object:**
+
+```Javascript
+document.body.appendChild(h1Element);
+```
+
+**Appending to Existing Container Element:**
+
+```Javascript
+let containerElement = document.getElementById("myContainer");
+containerElement.appendChild(h1Element);
+```
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="myContainer"></div>
+  </body>
+</html>
+```
+
+```Javascript
+let h1Element = document.createElement("h1");
+h1Element.textContent = "Web Technologies";
+
+let containerElement = document.getElementById("myContainer");
+containerElement.appendChild(h1Element);
+
+let btnElement = document.createElement("button");
+btnElement.textContent = "Change Heading";
+containerElement.appendChild(btnElement);
+```
+
+### Adding Event Listeners Dynamically
+
+```Javascript
+let btnElement = document.createElement("button");
+btnElement.textContent = "Change Heading";
+document.getElementById("myContainer").appendChild(btnElement);
+
+btnElement.onclick = function(){
+  console.log("click event triggered");
+};
+```
+
+### Providing Class Names Dynamically - `classList.add()`
+
+```Javascript
+btnElement.onclick = function(){
+  h1Element.textContent = "4.0 Technologies";
+  h1Element.classList.add("heading");
+
+  console.log(h1Element);
+};
+```
+
+```CSS
+.heading {
+  color: blue;
+  font-family: "Caveat";
+  font-size: 40px;
+  text-decoration: underline;
+}
+```
+
+### Removing Class Names Dynamically - `classList.remove()`
+
+```Javascript
+let removeStylesBtnElement = document.createElement("button");
+removeStylesBtnElement.textContent = "Remove Styles";
+
+document.getElementById("myContainer").appendChild(removeStylesBtnElement);
+
+removeStylesBtnElement.onclick = function(){
+  h1Element.classList.remove("heading");
+};
+```
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="myContainer"></div>
+  </body>
+</html>
+```
+
+```CSS
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.heading {
+  color: blue;
+  font-family: "Caveat";
+  font-size: 40px;
+  text-decoration: underline;
+}
+```
+
+```Javascript
+let h1Element = document.createElement("h1");
+h1Element.textContent = "Web Technologies";
+
+let containerElement = document.getElementById("myContainer");
+containerElement.appendChild(h1Element);
+
+let btnElement = document.createElement("button");
+btnElement.textContent = "Change Heading and Add Styles";
+containerElement.appendChild(btnElement);
+
+btnElement.onclick = function(){
+  h1Element.textContent = "4.0 Technologies";
+  h1Element.classList.add("heading");
+};
+
+let removeStylesBtnElement = document.createElement("button");
+removeStylesBtnElement.textContent = "Remove Styles";
+containerElement.appendChild(removeStylesBtnElement);
+
+removeStylesBtnElement.onclick = function(){
+  h1Element.classList.remove("heading");
+};
+```
