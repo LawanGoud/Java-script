@@ -534,3 +534,345 @@ removeStylesBtnElement.onclick = function(){
   h1Element.classList.remove("heading");
 };
 ```
+
+# Objects
+
+## Object
+
+An Object is a collection of properties.
+
+A property is an association between a name (or key) and a value.
+
+For example, a person has a name, age, city, etc. These are the properties of the person.
+
+| Key       | Value    |
+| --------- | -------- |
+| firstName | Rahul    |
+| lastName  | Attuluri |
+| age       | 28       |
+| city      | Delhi    |
+
+### Creating an Object
+
+We can add properties into `{}` as `key: value` pairs.
+
+```Javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+};
+
+console.log(person);  // Object {firstName: "Rahul", lastName: "Attuluri", age: 28}
+```
+
+#### Identifiers
+
+A valid Identifier should follow the below rules:
+
+- It can contain alphanumeric characters, \_ and $.
+- It cannot start with a number.
+
+**Valid Identifiers:**
+
+```Javascript
+firstName;
+$firstName;
+_firstName;
+firstName12;
+```
+
+**Invalid Identifiers:**
+
+```Javascript
+12firstName;
+firstName 12;
+```
+
+To use an Invalid identifier as a key, we have to specify it in quotes.
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  1: "value1",
+  "my choice": "value2",
+};
+
+console.log(person); // Object {1: "value1", firstName: "Rahul", lastName: "Attuluri", age: 28, my choice: "value2"}
+```
+
+## Accessing Object Properties
+
+### Dot Notation
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  1: "value1",
+  "my choice": "value2",
+};
+
+console.log(person.firstName); // Rahul
+```
+
+Use Dot notation when the key is a valid Identifier.
+
+### Bracket Notation
+
+```Javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  "1": "value1",
+  "my choice": "value2",
+};
+
+console.log(person["firstName"]);  // Rahul
+```
+
+### Accessing Non-existent Properties
+
+**Dot Notation:**
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  1: "value1",
+  "my choice": "value2",
+};
+
+console.log(person.gender); // undefined
+```
+
+**Bracket Notation:**
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  1: "value1",
+  "my choice": "value2",
+};
+
+console.log(person["gender"]); // undefined
+```
+
+### Variable as a Key
+
+```Javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+};
+
+let a = "firstName";
+
+console.log(person[a]);  // Rahul
+
+console.log(person.a);  // undefined
+```
+
+### Object Destructuring
+
+To unpack properties from Objects, we use Object Destructuring. The variable name should match with the key of an object.
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+};
+
+let { gender, age } = person;
+
+console.log(gender); // undefined
+
+console.log(age); // 28
+```
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  1: "value1",
+  "my choice": "value2",
+};
+
+let a = "firstName";
+let { gender, age } = person;
+
+console.log(person.firstName);
+
+console.log(person["gender"]);
+
+console.log(person[a]);
+
+console.log(person.a);
+
+console.log(gender);
+
+console.log(age);
+```
+
+## Modifying Objects
+
+### Modifying Object Property
+
+**Dot Notation:**
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+};
+
+person.firstName = "Abhi";
+
+console.log(person.firstName); // Abhi
+```
+
+**Bracket Notation:**
+
+```Javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+};
+
+person["firstName"] = "Abhi";
+
+console.log(person["firstName"]);  // Abhi
+```
+
+### Adding Object Property
+
+**Dot Notation:**
+
+```Javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+};
+
+person.gender = "Male";
+
+console.log(person);  // Object {firstName: "Rahul", lastName: "Attuluri", age: 28, gender: "Male"}
+```
+
+**Bracket Notation:**
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+};
+
+person["gender"] = "Male";
+
+console.log(person); // Object {firstName: "Rahul", lastName: "Attuluri", age: 28, gender: "Male"}
+```
+
+## Property Value
+
+The Value of Object Property can be
+
+- Function
+- Array
+- Object
+
+### Function as a Value
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  run: function () {
+    console.log("Start Running.");
+  },
+};
+
+person.run(); // Start Running.
+```
+
+**Methods:**
+
+A JavaScript method is a property containing a function definition.
+
+For example, in `document.createElement();`, the document is an Object, `createElement` is a key and `createElement()` is a Method.
+
+### Array as a Value
+
+```Javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  habits: ["Playing Chess", "Singing"],
+};
+
+console.log(person.habits);  // ["Playing Chess", "Singing"]
+
+console.log(person.habits[0]);  // Playing Chess
+
+console.log(person["habits"][1]);  // Singing
+```
+
+### Object as a Value
+
+```javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  habits: ["Playing Chess", "Singing", "Dancing"],
+  car: {
+    name: "Audi",
+    model: "A6",
+    color: "White",
+  },
+};
+
+console.log(person.car.name); // Audi
+
+console.log(person.car["model"]); // A6
+```
+
+# Object And Array
+
+```Javascript
+let person = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 28,
+  run: function () {
+    console.log("Start Running.");
+  },
+  habits: ["Playing Chess", "Singing", "Dancing"],
+  car: {
+    name: "Audi",
+    model: "A6",
+    color: "White",
+  },
+};
+
+person.run();
+
+console.log(person.car.name);
+
+console.log(person.car["model"]);
+```
