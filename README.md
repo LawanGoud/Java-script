@@ -123,8 +123,6 @@ Basically In JavaScript values are of two categories.
 | String         | String is a stream of characters. The String should be enclosed with Single quotes, Double quotes, or Backticks.                                       |
 | Undefined      | If a value is not assigned to the variable, then it takes `undefined` as its value. In JS, `undefined` refers to the value that is not being assigned. |
 
-|
-
 ### Operators
 
 #### typeof()
@@ -174,4 +172,113 @@ if (conditionA) {
 } else {
   Block3;
 }
+```
+
+# Input Element and Math Functions
+
+## Math Functions
+
+### Math.random()
+
+The `Math.random()` function returns a random number (float value) in range 0 to less than 1 (`0 <= randomNumber < 1`).
+
+```Javascript
+console.log(Math.random());
+```
+
+### Math.ceil()
+
+The `Math.ceil()` function always rounds a number up to the next largest integer.
+
+```Javascript
+console.log(Math.ceil(95.906698007537561));  // 96
+```
+
+```JavaScript
+let randomNumber = Math.random();
+console.log(randomNumber);
+console.log(randomNumber*1000);
+console.log(Math.ceil(randomNumber*1000));
+```
+
+## HTML Elements
+
+### HTML Input Element
+
+The HTML input element creates interactive controls to accept the data from the user.
+
+There are different types of inputs.
+
+- Text
+- Password
+- Radio
+- Date
+- Checkbox
+
+#### Text Input
+
+```Javascript
+<input type="text" />
+```
+
+**Note**
+
+Default type for the HTML `input` element is `text`.
+
+#### Password Input
+
+It provides a way for the user to enter a password securely.
+
+```Javascript
+<input type="password" />
+```
+
+## DOM Properties
+
+### Value
+
+We can use the `value` property to get the value of the HTML `input` Element.
+
+```Javascript
+document.getElementById("inputElement").value;
+```
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <p>Enter your Name</p>
+    <input type="text" id="inputElement" />
+    <p>Enter your Password</p>
+    <input type="password" />
+    <div>
+      <button onclick="signIn()">Sign In</button>
+    </div>
+    <p id="signInText"></p>
+  </body>
+</html>
+```
+
+```Javascript
+let inputElement = document.getElementById("inputElement");
+let signInTextElement = document.getElementById("signInText");
+function signIn() {
+  let inputValue = inputElement.value;
+  let verifyText = "Hi " + inputValue + ", verifying your account...";
+  signInTextElement.textContent = verifyText;
+}
+```
+
+## Comparison Operator
+
+### Loose equal to vs Strict equal to (`== vs ===`)
+
+Loose equal to (`==`): Loose equality compares two values for equality but doesn’t compare types of values.
+
+Strict equal to (`===`): Strict equality compares two values for equality including types of values.
+
+```Javascript
+console.log(2 == '2');  // true
+console.log(2 === '2');  // false
 ```
