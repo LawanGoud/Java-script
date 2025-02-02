@@ -1153,3 +1153,65 @@ function greeting() {
 
 greeting();
 ```
+
+# Todos Application Part - 2
+
+## HTML Input Element
+
+### Placeholder
+
+Placeholder is the text that appears in the HTML input element when no value is set. We can specify it using the HTML attribute placeholder.
+
+```HTML
+<input type="text" placeholder="Enter your name" />
+```
+
+## JavaScript built-in Functions
+
+### alert()
+
+The `alert()` function displays an alert box with a specified message and an OK button.
+
+```JavaScript
+alert("Enter Valid Text");
+```
+
+## DOM Properties
+
+### Checked
+
+The `checked` property sets or returns the checked status of an HTML checkbox `input` element as a boolean value.
+
+```JavaScript
+let checkboxElement = document.getElementById(checkboxId);
+checkboxElement.checked = true;
+```
+
+## DOM Manipulations
+
+### The removeChild() Method
+
+The `removeChild()` method removes an HTML child element of the specified HTML parent element from the DOM and returns the removed HTML child element.
+
+```JavaScript
+function onDeleteTodo(todoId) {
+  let todoElement = document.getElementById(todoId);
+
+  todoItemsContainer.removeChild(todoElement);
+}
+```
+
+### The classList.toggle() Method
+
+The `classList.toggle()` method is used to toggle between adding and removing a class name from an HTML element.
+
+```JavaScript
+function onTodoStatusChange(checkboxId, labelId) {
+  let checkboxElement = document.getElementById(checkboxId);
+  let labelElement = document.getElementById(labelId);
+
+  labelElement.classList.toggle('checked');
+}
+```
+
+We can replace classList.add() and classList.remove() methods with classList.toggle() method.
