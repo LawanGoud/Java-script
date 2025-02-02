@@ -876,3 +876,189 @@ console.log(person.car.name);
 
 console.log(person.car["model"]);
 ```
+
+# Todos Application
+
+## HTML Input Element
+
+### Checkbox
+
+The HTML `input` element can be used to create a Checkbox. To define a Checkbox, you need to specify the HTML type attribute with the value `checkbox` for an HTML `input` element.
+
+```HTML
+<input type="checkbox" />
+```
+
+### The HTML Label Element
+
+The HTML `label` element defines a Label.
+
+```HTML
+<label for="myCheckbox">Graduated</label>
+```
+
+#### The HTML for Attribute
+
+The HTML `for` attribute associates the HTML `label` element with an HTML `input` element.
+
+```HTML
+<input type="checkbox" id="myCheckbox" />
+<label for="myCheckbox">Graduated</label>
+```
+
+## DOM Manipulations
+
+### The htmlFor Property
+
+We can use `htmlFor` property to add HTML `for` attribute to the HTML `label` element.
+
+```Javascript
+let labelElement = document.createElement("label");
+labelElement.htmlFor = "myCheckbox";
+```
+
+### The setAttribute() Method
+
+We can use `setAttribute()` method to set any HTML attribute name and its corresponding value. If the attribute already exists, the value is updated. Otherwise, a new attribute is added with the specified name and value.
+
+**Syntax**: `Element.setAttribute(name, value);`
+
+```Javascript
+let labelElement = document.createElement("label");
+labelElement.setAttribute("for", "myCheckbox");
+```
+
+```Javascript
+let inputElement = document.createElement("input");
+
+inputElement.type = "checkbox";
+inputElement.id = "myCheckbox";
+document.body.appendChild(inputElement);
+```
+
+## Loops
+
+Loops allow us to execute a block of code several times.
+
+- for...of Loop
+- for...in Loop
+- for Loop
+- while Loop and many more.
+
+### The for...of Loop
+
+```Javascript
+let myArray = [1, 2, 3, 4];
+
+for (let eachItem of myArray) {
+   console.log(eachItem);
+}
+```
+
+```HTML
+<li class="todo-item-container d-flex flex-row">
+  <input type="checkbox" id="checkboxInput" class="checkbox-input" />
+  <div class="d-flex flex-row label-container">
+    <label for="checkboxInput" class="checkbox-label">
+      Learn HTML
+    </label>
+    <div class="delete-icon-container">
+      <i class="far fa-trash-alt delete-icon"></i>
+    </div>
+  </div>
+</li>
+```
+
+### The HTML Code for creating a Todo Item:
+
+```HTML
+<li class="todo-item-container d-flex flex-row">
+  <input type="checkbox" id="checkboxInput" class="checkbox-input" />
+  <div class="d-flex flex-row label-container">
+    <label for="checkboxInput" class="checkbox-label">
+      Learn HTML
+    </label>
+    <div class="delete-icon-container">
+      <i class="far fa-trash-alt delete-icon"></i>
+    </div>
+  </div>
+</li>
+```
+
+## CSS Box Properties
+
+### Border
+
+The CSS border property is a shorthand property for:
+
+- border-width
+- border-style (required)
+- border-color
+
+For example,
+
+```CSS
+.button {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: #e4e7eb;
+}
+```
+
+Instead of writing the CSS properties `border-style`, `border-width` and `border-color` individually, we can apply these properties at once with a single CSS property called `border`.
+
+**Syntax**: `border: border-width border-style border-color`
+
+```CSS
+.button {
+  border: 2px dashed #e4e7eb;
+}
+```
+
+To specify the border on one of the four sides of an HTML element, you can use the below CSS properties.
+
+- border-top
+- border-bottom
+- border-right
+- border-left
+
+```CSS
+.button {
+  border-top: 1px dotted #e4e7eb;
+}
+```
+
+If the border is not required, we can apply the `none` as value to the CSS `border` property.
+
+```CSS
+.button {
+  border: none;
+}
+```
+
+For example, if the border property is not required on the top side of an HTML element. You can use,
+
+```CSS
+.button {
+  border-top: none;
+}
+```
+
+```HTML
+    <div class="p-3">
+      <button class="button-1">Learn more</button>
+      <button class="button-2">Read more</button>
+    </div>
+```
+
+```CSS
+.button-1 {
+  border-top: 2px dashed orange;
+}
+
+.button-2 {
+  border-bottom: none;
+}
+```
+
+## TodosList
