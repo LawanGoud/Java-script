@@ -1062,3 +1062,94 @@ For example, if the border property is not required on the top side of an HTML e
 ```
 
 ## TodosList
+
+# On-Demand Session
+
+## Most Commonly Made Mistakes
+
+### Most of the JS properties and methods should be in the Camel case.
+
+Most of the JS properties and methods are in the Camel case (the starting letter of each word should be in uppercase except for the first word).
+
+| Code                      | Mistake        | Correct Syntax            |
+| ------------------------- | -------------- | ------------------------- |
+| document.CreateElement()  | C in Uppercase | document.createElement()  |
+| document.getElementbyId() | b in Lowercase | document.getElementById() |
+| element.textcontent       | c in Lowercase | element.textContent       |
+| element.classlist.add()   | l in Lowercase | element.classList.add()   |
+
+## The ID should be the same in both the HTML and JS.
+
+### Mistake
+
+```HTML
+<h1 id="heading">Shopping List</h1>
+```
+
+```JavaScript
+let headingEl = document.getElementById("listHeading");
+headingEl.textContent = "Items Needed";
+```
+
+In the above Code Snippets, the HTML element's text content doesn't change because the ID used in HTML and JS are different.
+
+So, While accessing an HTML element with the ID using JS, the ID used in the HTML element and the document.getElementById method must be the same.
+
+```HTML
+<h1 id="heading">Shopping List</h1>
+```
+
+```JavaScript
+let headingEl = document.getElementById("heading");
+headingEl.textContent = "Items Needed";
+```
+
+### Mistake
+
+```HTML
+<h1 id="listHeading ">Shopping List</h1>
+```
+
+```JavaScript
+let headingEl = document.getElementById("listHeading");
+headingEl.textContent = "Items Needed";
+```
+
+The HTML element's text content doesn't change because there is an extra space at the end of the ID in the HTML code.
+
+So, there shouldn't be any extra spaces in the IDs used in both the HTML and JS.
+
+```HTML
+<h1 id="listHeading">Shopping List</h1>
+```
+
+```JavaScript
+let headingEl = document.getElementById("listHeading");
+headingEl.textContent = "Items Needed";
+```
+
+## The Function name must be the same in both the Function declaration and the Function call.
+
+### Mistake
+
+```JavaScript
+function greeting() {
+  let message = "Hello Rahul";
+  console.log(message);
+}
+
+greet();
+```
+
+As there is no function called `greet`, we will get an error in the above Code Snippet.
+
+So, while calling a function, you must use the same function name used in the function declaration.
+
+```JavaScript
+function greeting() {
+  let message = "Hello Rahul";
+  console.log(message);
+}
+
+greeting();
+```
