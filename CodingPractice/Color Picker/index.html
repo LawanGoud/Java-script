@@ -30,21 +30,50 @@
   <body>
     <div
       class="color-picker-container d-flex flex-column justify-content-center text-center"
+      id="colorPickerContainer"
     >
       <h1 class="color-picker-heading">Color Picker</h1>
       <div class="">
-        <button type="button" class="button button-1">#e0e0e0</button>
-        <button type="button" class="button button-2">#6fcf97</button>
-        <button type="button" class="button button-3">#56ccf2</button>
-        <button type="button" class="button button-4">#bb6bd9</button>
+        <button
+          type="button"
+          class="button button-1"
+          onclick="changeBgToGreyAndUpdateText()"
+        >
+          #e0e0e0
+        </button>
+        <button
+          type="button"
+          class="button button-2"
+          onclick="changeBgToGreenAndUpdateText()"
+        >
+          #6fcf97
+        </button>
+        <button
+          type="button"
+          class="button button-3"
+          onclick="changeBgToBlueAndUpdateText()"
+        >
+          #56ccf2
+        </button>
+        <button
+          type="button"
+          class="button button-4"
+          onclick="changeBgToPurpleAndUpdateText()"
+        >
+          #bb6bd9
+        </button>
       </div>
       <p class="selected-color-text">
-        Background Color : <span class="selected-color-hex-code">#ffffff</span>
+        Background Color :
+        <span class="selected-color-hex-code" id="selectedColorHexCode"
+          >#ffffff</span
+        >
       </p>
       <p class="color-picker-instruction">
         Try clicking on one of the colors above to change background color of
         this page!
       </p>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
