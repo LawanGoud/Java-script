@@ -41,22 +41,24 @@
         <div class="row">
           <div class="col-12 col-md-6 mb-4">
             <p class="input-label" mb-2>BILL AMOUNT</p>
-            <input type="text" id="" class="user-input" />
+            <input type="text" id="billAmount" class="user-input" />
           </div>
           <div class="col-12 col-md-6 mb-4">
             <p class="input-label" mb-2>PERCENTAGE TIP</p>
-            <input type="text" id="" class="user-input" />
+            <input type="text" id="percentageTip" class="user-input" />
           </div>
           <div class="col-12 col-md-6 mb-4">
             <p class="input-label" mb-2>TIP AMOUNT</p>
-            <input type="text" id="" class="user-input" />
+            <input type="text" id="tipAmount" class="user-input" />
           </div>
           <div class="col-12 col-md-6 mb-4">
             <p class="input-label" mb-2>TOTAL</p>
-            <input type="text" id="" class="user-input" />
+            <input type="text" id="totalAmount" class="user-input" />
           </div>
           <div class="col-12 text-center mt-4">
-            <button class="calculate-tip-button">CALCULATE</button>
+            <button class="calculate-tip-button" onclick="calculateTip()">
+              CALCULATE
+            </button>
             <p id="errorMessage" class="error-message text-center"></p>
           </div>
         </div>
