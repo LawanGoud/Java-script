@@ -33,18 +33,26 @@
         src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/seasons-switcher-four-seasons-xs-img.png"
         alt="Seasons Switcher"
         class="season-image d-md-none"
+        id="seasonSmallImage"
       />
       <img
         src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/seasons-switcher-four-seasons-md-img.png"
         alt="Seasons Switcher"
         class="season-image d-none d-md-inline"
+        id="seasonMediumImage"
       />
       <div class="d-flex justify-content-center mt-4">
-        <button class="button spring-button">Spring</button
-        ><button class="button summer-button">Summer</button
-        ><button class="button autumn-button">Autumn</button
-        ><button class="button winter-button">Winter</button>
+        <button class="button spring-button" onclick="changeSeasonToSpring()">
+          Spring</button
+        ><button class="button summer-button" onclick="changeSeasonToSummer()">
+          Summer</button
+        ><button class="button autumn-button" onclick="changeSeasonToAutumn()">
+          Autumn</button
+        ><button class="button winter-button" onclick="changeSeasonToWinter()">
+          Winter
+        </button>
       </div>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
