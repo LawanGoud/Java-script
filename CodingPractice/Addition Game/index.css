@@ -39,3 +39,11 @@
   border-color: #e4e7eb;
   border-radius: 12px;
 }
+
+.game-result {
+  color: #ffffff;
+  background-color: #f5f7fa;
+  font-family: "Roboto";
+  font-size: 24px;
+  font-weight: 500;
+}
