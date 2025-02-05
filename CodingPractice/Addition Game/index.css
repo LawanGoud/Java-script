@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.sum-of-two-numbers-img {
+  width: 360px;
+}
+
+.bg-container {
+  background-color: #f5f7fa;
+}
+
+.number {
+  color: #323f4b;
+  background-color: #cbd2d9;
+  font-family: "Roboto";
+  font-size: 30px;
+  font-weight: bold;
+  border-style: 8px;
+  border-color: #e4e7eb;
+  border-radius: 12px;
+  padding: 0px 8px;
+}
+
+.operator {
+  color: #c4c4c4;
+  font-family: "Roboto";
+  font-size: 40px;
+}
+
+.user-input {
+  text-align: center;
+  color: #323f4b;
+  background-color: #cbd2d9;
+  font-family: "Roboto";
+  font-size: 30px;
+  width: 142px;
+  height: 60px;
+  border-style: solid;
+  border-width: 8px;
+  border-color: #e4e7eb;
+  border-radius: 12px;
+}
