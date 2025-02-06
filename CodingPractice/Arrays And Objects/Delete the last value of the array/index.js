@@ -30,12 +30,7 @@ function readLine() {
 
 function main() {
   let input = readLine().replace(/'/g, '"');
-  // myArray
   let myArray = JSON.parse(input);
-
-  /*
-   * Write your code here and log the output.
-   */
   let deletedVal = myArray.pop();
   console.log(deletedVal);
   console.log(myArray);
