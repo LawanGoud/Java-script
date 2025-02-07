@@ -18,11 +18,12 @@ let todoList = [
 function onTodoStatusChange(checkboxId, labelId) {
   let checkbox = document.getElementById(checkboxId);
   let label = document.getElementById(labelId);
-  if (checkbox.checked === true) {
-    label.classList.add("checked");
-  } else {
-    label.classList.remove("checked");
-  }
+  // if (checkbox.checked === true) {
+  //   label.classList.add("checked");
+  // } else {
+  //   label.classList.remove("checked");
+  // }
+  label.classList.toggle("checked");
 }
 
 function createAndAppend(todo) {
