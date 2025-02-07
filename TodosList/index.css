@@ -103,3 +103,7 @@
 .delete-icon {
   padding: 15px;
 }
+
+.is-checked {
+  text-decoration: line-through;
+}
