@@ -15,8 +15,19 @@ let todoList = [
   },
 ];
 
+function onTodoStatusChange(checkboxId, labelId) {
+  let checkbox = document.getElementById(checkboxId);
+  let label = document.getElementById(labelId);
+  if (checkbox.checked === true) {
+    label.classList.add("checked");
+  } else {
+    label.classList.remove("checked");
+  }
+}
+
 function createAndAppend(todo) {
   let checkboxId = "checkbox" + todo.uniqueNo;
+  let labelId = "label" + todo.uniqueNo;
 
   let todoElement = document.createElement("li");
   todoElement.classList.add("todo-item-container", "d-flex");
@@ -26,6 +37,9 @@ function createAndAppend(todo) {
   inputElement.type = "checkbox";
   inputElement.id = checkboxId;
   inputElement.classList.add("checkbox-input");
+  inputElement.onclick = function () {
+    onTodoStatusChange(checkboxId, labelId);
+  };
   todoElement.appendChild(inputElement);
 
   let labelContainer = document.createElement("div");
@@ -36,6 +50,7 @@ function createAndAppend(todo) {
   labelElement.setAttribute("for", checkboxId);
   labelElement.classList.add("checkbox-label");
   labelElement.textContent = todo.text;
+  labelElement.id = labelId;
   labelContainer.appendChild(labelElement);
 
   let deleteIconContainer = document.createElement("div");

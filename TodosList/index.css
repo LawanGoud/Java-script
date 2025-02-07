@@ -104,6 +104,6 @@
   padding: 15px;
 }
 
-.is-checked {
+.checked {
   text-decoration: line-through;
 }
