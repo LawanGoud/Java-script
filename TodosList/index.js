@@ -15,6 +15,11 @@ let todoList = [
   },
 ];
 
+function onDeleteTodo(todoId) {
+  let todoElement = document.getElementById(todoId);
+  todoItemsContainer.removeChild(todoElement);
+}
+
 function onTodoStatusChange(checkboxId, labelId) {
   let checkbox = document.getElementById(checkboxId);
   let label = document.getElementById(labelId);
@@ -29,9 +34,11 @@ function onTodoStatusChange(checkboxId, labelId) {
 function createAndAppend(todo) {
   let checkboxId = "checkbox" + todo.uniqueNo;
   let labelId = "label" + todo.uniqueNo;
+  let todoId = "todo" + todo.uniqueNo;
 
   let todoElement = document.createElement("li");
   todoElement.classList.add("todo-item-container", "d-flex");
+  todoElement.id = todoId;
   todoItemsContainer.appendChild(todoElement);
 
   let inputElement = document.createElement("input");
@@ -60,6 +67,9 @@ function createAndAppend(todo) {
 
   let deleteIcon = document.createElement("i");
   deleteIcon.classList.add("bi", "bi-trash", "delete-icon");
+  deleteIconContainer.onclick = function () {
+    onDeleteTodo(todoId);
+  };
   deleteIconContainer.appendChild(deleteIcon);
 }
 
