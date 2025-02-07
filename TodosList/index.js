@@ -83,6 +83,11 @@ function onAddTodo() {
   let userInputElement = document.getElementById("todoUserInput");
   let userInputValue = userInputElement.value;
 
+  if (userInputValue === "") {
+    alert("Please enter a todo item");
+    return;
+  }
+
   todosCount = todosCount + 1;
   let newTodo = {
     text: userInputValue,
