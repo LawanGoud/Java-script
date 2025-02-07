@@ -8,10 +8,9 @@
 .todos-heading {
   text-align: center;
   font-family: "Roboto";
-  font-size: 46px;
+  font-size: 32px;
   font-weight: 500;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0px;
 }
 
 .create-task-heading {
@@ -21,30 +20,7 @@
 }
 
 .create-task-heading-subpart {
-  font-family: "Roboto";
-  font-size: 32px;
   font-weight: 500;
-}
-
-.todo-items-heading {
-  font-family: "Roboto";
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.todo-items-heading-subpart {
-  font-family: "Roboto";
-  font-size: 32px;
-  font-weight: 500;
-}
-
-.todo-items-container {
-  margin: 0px;
-  padding: 0px;
-}
-
-.todo-item-container {
-  margin-top: 15px;
 }
 
 .todo-user-input {
@@ -67,14 +43,30 @@
   border-radius: 4px;
   margin-top: 20px;
   margin-bottom: 50px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 5px 20px;
+}
+
+.todo-items-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.todo-items-heading-subpart {
+  font-weight: 500;
+}
+
+.todo-items-container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.todo-item-container {
+  margin-top: 15px;
 }
 
 .label-container {
-  background-color: #e6f6ff;
+  background-color: #e6feff;
   width: 100%;
   border-style: solid;
   border-width: 5px;
@@ -97,23 +89,17 @@
   font-size: 16px;
   font-weight: 400;
   width: 82%;
-  margin: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-top: 0px;
+  padding: 10px 20px;
   border-radius: 5px;
 }
 
 .delete-icon-container {
   text-align: right;
+  align-content: center;
   width: 18%;
 }
 
 .delete-icon {
   padding: 15px;
-}
-
-.checked {
-  text-decoration: line-through;
 }
