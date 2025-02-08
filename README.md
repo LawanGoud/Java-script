@@ -1215,3 +1215,141 @@ function onTodoStatusChange(checkboxId, labelId) {
 ```
 
 We can replace classList.add() and classList.remove() methods with classList.toggle() method.
+
+# Todos Application Part - 3
+
+## Execution Context
+
+The environment in which JavaScript Code runs is called Execution Context.
+
+Execution context contains all the variables, objects, and functions.
+
+Execution Context is destroyed and recreated whenever we reload an Application.
+
+## Storage Mechanisms
+
+### Client-Side Data Storage
+
+Client-Side Data Storage is storing the data on the client (user's machine).
+
+- Local Storage
+- Session Storage
+- Cookies
+- IndexedDB and many more.
+
+### Server-Side Data Storage
+
+Server-Side Data Storage is storing the data on the server.
+
+## Local Storage
+
+It allows web applications to store data locally within the user's browser.
+
+It is a Storage Object. Data can be stored in the form of key-value pairs.
+
+Please note that both key and value must be strings. If their type is other than a string, they get converted to strings automatically.
+
+| Key      | Value          |
+| -------- | -------------- |
+| fullName | Rahul Attuluri |
+| gender   | Male           |
+| city     | Delhi          |
+
+To access and work with Local Storage we have below methods:
+
+- setItem()
+- getItem()
+- clear()
+- removeItem()
+
+### The setItem() Method
+
+The `setItem()` method can be used for storing data in the Local Storage.
+
+**Syntax**: `localStorage.setItem("Key", "Value")`;
+
+### The getItem() Method
+
+The `getItem()` method can be used for getting data from the Local Storage.
+
+**Syntax**: `localStorage.getItem("Key")`;
+
+```Javascript
+localStorage.setItem("fullName", "Rahul Attuluri");
+
+localStorage.setItem("gender", "Male");
+
+localStorage.setItem("city", "Delhi");
+
+let fullName = localStorage.getItem("fullName");
+
+let gender = localStorage.getItem("gender");
+
+let city = localStorage.getItem("city");
+
+console.log(fullName);
+console.log(gender);
+console.log(city);
+```
+
+## Values
+
+### null
+
+We use `null` in a situation where we intentionally want a variable but don't need a value to it.
+
+```Javascript
+let selectedColor = null;
+
+console.log(selectedColor);  // null
+console.log(typeof(selectedColor));  // object
+```
+
+## HTML Elements
+
+### The textarea Element
+
+The HTML `textarea` element can be used to write the multiline text as an input.
+
+```HTML
+<textarea rows="8" cols="55"></textarea>
+```
+
+- The HTML `rows` attribute specifies the number of lines.
+- The HTML `cols` attribute specifies the number of characters per each line.
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <textarea rows="8" cols="55" id="message"></textarea>
+    <br />
+    <button class="btn btn-primary mt-1" id="saveButton">Save</button>
+  </body>
+</html>
+```
+
+```Javascript
+let textAreaElement = document.getElementById("message");
+let saveButton = document.getElementById("saveButton");
+
+saveButton.onclick = function() {
+  let userEnteredText = textAreaElement.value;
+  localStorage.setItem("userEnteredText", userEnteredText);
+};
+
+let storedUserInputValue = localStorage.getItem("userEnteredText");
+
+if (storedUserInputValue === null) {
+  textAreaElement.value = "";
+}
+else {
+  textAreaElement.value = storedUserInputValue;
+}
+```
