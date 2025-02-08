@@ -51,3 +51,48 @@
 .todo-items-heading-subpart {
   font-weight: 500;
 }
+
+.todo-items-container {
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item-container {
+  margin-top: 15px;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin: 12px 12px 0px 0px;
+}
+
+.label-container {
+  background-color: #e6f6ff;
+  width: 100%;
+  border: 5px solid #096f92;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 4px;
+}
+
+.checkbox-label {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  width: 82%;
+  margin: 0px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.delete-icon-container {
+  text-align: right;
+  align-content: center;
+  width: 18%;
+}
+
+.delete-icon {
+  padding: 15px;
+}
