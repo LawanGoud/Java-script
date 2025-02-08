@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.todos-bg-container {
+  background-color: #f9fbfe;
+  height: 100vh;
+}
+
+.todo-heading {
+  font-family: "Roboto";
+  font-size: 46px;
+  font-weight: 500;
+  margin: 20px 0px;
+}
+
+.create-task-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.create-task-heading-subpart {
+  font-weight: 500;
+}
+
+.todo-user-input {
+  background-color: white;
+  width: 100%;
+  border: 1px solid #e4e7eb;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.add-todo-button {
+  background-color: #4c63b6;
+  color: white;
+  font-family: "Roboto";
+  font-size: 18px;
+  border-width: 0px;
+  border-radius: 4px;
+  margin: 20px 0px;
+  padding: 5px 20px;
+}
+
+.todo-items-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.todo-items-heading-subpart {
+  font-weight: 500;
+}
