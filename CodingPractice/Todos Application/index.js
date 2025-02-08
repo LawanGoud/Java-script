@@ -10,15 +10,16 @@ let todoList = [
   },
 ];
 
-function createAndAppend(todo) {
-  let todoItemsContainer = document.getElementById("todoItemsContainer");
+let todoItemsContainer = document.getElementById("todoItemsContainer");
 
+function createAndAppend(todo) {
   let todoElement = document.createElement("li");
   todoElement.classList.add("todo-item-container", "d-flex");
   todoItemsContainer.appendChild(todoElement);
 
   let inputElement = document.createElement("input");
   inputElement.type = "checkbox";
+  inputElement.id = "checkboxInput";
   inputElement.classList.add("checkbox-input");
   todoElement.appendChild(inputElement);
 
@@ -27,6 +28,7 @@ function createAndAppend(todo) {
   todoElement.appendChild(labelContainer);
 
   let labelElement = document.createElement("label");
+  labelElement.setAttribute("for", "checkboxInput");
   labelElement.classList.add("checkbox-label");
   labelElement.textContent = todo.text;
   labelContainer.appendChild(labelElement);
