@@ -61,3 +61,28 @@ function createAndAppend(todo) {
 for (let todo of todoList) {
   createAndAppend(todo);
 }
+
+let todosCount = todoList.length;
+
+function onAddTodo() {
+  let userInputElement = document.getElementById("todoUserInput");
+  let userInputValue = userInputElement.value;
+
+  if (userInputValue === "") {
+    alert("Enter Valid Text");
+    return;
+  }
+
+  todosCount = todosCount + 1;
+
+  let newTodo = {
+    text: userInputValue,
+    uniqueNo: todosCount,
+  };
+  createAndAppend(newTodo);
+  userInputElement.value = "";
+}
+
+addTodoButton.onclick = function () {
+  onAddTodo();
+};
