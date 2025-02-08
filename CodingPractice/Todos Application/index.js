@@ -1,26 +1,41 @@
 let todoList = [
   {
     text: "Learn HTML",
+    uniqueNo: 1,
   },
   {
     text: "Learn CSS",
+    uniqueNo: 2,
   },
   {
     text: "Learn JavaScript",
+    uniqueNo: 3,
   },
 ];
 
 let todoItemsContainer = document.getElementById("todoItemsContainer");
 
+function onTodoStatusChange(checkboxId, labelId) {
+  let checkbox = document.getElementById(checkboxId);
+  let label = document.getElementById(labelId);
+  label.classList.toggle("checked");
+}
+
 function createAndAppend(todo) {
+  let checkboxId = "checkbox" + todo.uniqueNo;
+  let labelId = "label" + todo.uniqueNo;
+
   let todoElement = document.createElement("li");
   todoElement.classList.add("todo-item-container", "d-flex");
   todoItemsContainer.appendChild(todoElement);
 
   let inputElement = document.createElement("input");
   inputElement.type = "checkbox";
-  inputElement.id = "checkboxInput";
+  inputElement.id = checkboxId;
   inputElement.classList.add("checkbox-input");
+  inputElement.onclick = function () {
+    onTodoStatusChange(checkboxId, labelId);
+  };
   todoElement.appendChild(inputElement);
 
   let labelContainer = document.createElement("div");
@@ -28,8 +43,9 @@ function createAndAppend(todo) {
   todoElement.appendChild(labelContainer);
 
   let labelElement = document.createElement("label");
-  labelElement.setAttribute("for", "checkboxInput");
+  labelElement.setAttribute("for", checkboxId);
   labelElement.classList.add("checkbox-label");
+  labelElement.id = labelId;
   labelElement.textContent = todo.text;
   labelContainer.appendChild(labelElement);
 
