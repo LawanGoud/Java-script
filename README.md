@@ -1414,3 +1414,190 @@ console.log(stringifiedProfile); // {"name":"Rahul","age":29,"designation":"Web 
 
 console.log(typeof(stringifiedProfile)); // string
 ```
+
+# Todo Application Part - 5
+
+## Array Methods
+
+| Method                                            | Functionality              |
+| ------------------------------------------------- | -------------------------- |
+| includes, indexOf, lastIndexOf, find, findIndex() | Finding Elements           |
+| push, unshift, splice                             | Adding Elements            |
+| pop, shift, splice                                | Removing Elements          |
+| concat, slice                                     | Combining & Slicing Arrays |
+| join                                              | Joining Array Elements     |
+| sort                                              | Sorting Array Elements     |
+
+### splice()
+
+The `splice()` method changes the contents of an array.
+
+Using `splice()` method, we can
+
+- Remove existing items
+- Replace existing items
+- Add new items
+
+**_Removing existing items_**
+
+**_Syntax :_** `arr.splice(Start, Delete Count)`
+
+- Start : Starting Index
+- Delete Count : Number of items to be removed, starting from the given index
+
+```Javascript
+let myArray = [5, "six", 2, 8.2];
+myArray.splice(2, 2);
+
+console.log(myArray);  // [5, "six"]
+
+let deletedItems = myArray.splice(2, 2);
+
+console.log(deletedItems);  // [2, 8.2]
+```
+
+The `splice()` method returns an array containing the deleted items.
+
+**_Adding new items_**
+
+**_Syntax :_** `arr.splice(Start, Delete Count, Item1, Item2...)`
+
+Here the `Item1, Item2 ...` are the items to be added, starting from the given index.
+
+```Javascript
+let myArray = [5, "six", 2, 8.2];
+myArray.splice(2, 0, "one", false);
+
+console.log(myArray);  // [5, "six", "one", false, 2, 8.2]
+```
+
+**_Replacing existing items_**
+
+**_Syntax:_** `arr.splice(Start, Delete Count, Item1, Item2 ... )`
+
+### findIndex()
+
+The `findIndex()` method returns the first item's index that satisfies the provided testing function. If no item is found, it returns `-1`.
+
+**_Syntax :_** `arr.findIndex(Testing Function)`
+
+Here Testing Function is a function to execute on each value in the array.
+
+```Javascript
+let myArray = [5, 12, 8, 130, 44];
+let itemIndex = myArray.findIndex(function(eachItem) {
+  console.log(eachItem);
+});
+```
+
+In the above code snippet, the below function is a Testing Function.
+
+```
+function(eachItem) {
+console.log(eachItem);
+}
+```
+
+```Javascript
+let myArray = [5, 12, 8, 130, 44];
+let itemIndex = myArray.findIndex(function (eachItem) {
+    if (eachItem === 130) {
+        return true;
+    } else {
+        return false;
+    }
+});
+console.log(itemIndex);
+```
+
+### includes()
+
+The `includes()` method returns true if the provided item exists in the array. If no item is found, it returns `false`.
+
+**_Syntax:_** `arr.includes(item)`
+
+### indexOf()
+
+The `indexOf()` method returns the first index at which a given item can be found in the array. If no item is found, it returns `-1`.
+
+**_Syntax:_** `arr.indexOf(item)`
+
+### lastIndexOf()
+
+The `lastIndexOf()` method returns the last index at which a given item can be found in the array. If no item is found, it returns `-1`.
+
+**_Syntax :_** `arr.lastIndexOf(item)`
+
+### find()
+
+The `find()` method returns the first item's value that satisfies the provided testing function. If no item is found, it returns `undefined`.
+
+**_Syntax:_** `arr.find(Testing Function)`
+
+### unshift()
+
+The `unshift()` method adds one or more items to the beginning of an array and returns the new array length.
+
+**_Syntax:_** `arr.unshift(item1,item2, ..., itemN)`
+
+### shift()
+
+The `shift()` method removes the first item from an array and returns that removed item.
+
+**_Syntax:_** `arr.shift()`
+
+### concat()
+
+The `concat()` method can be used to merge two or more arrays.
+
+This method does not change the existing arrays but instead returns a new array.
+
+**_Syntax_**
+
+```JS
+let newArray = arr1.concat(arr2);
+```
+
+### slice()
+
+The `slice()` method returns a portion between the specified start index and end index(end index not included) of an array into a new array.
+
+**_Syntax:_** `arr.slice(startIndex, endIndex)`
+
+### join()
+
+The `join()` method creates and returns a new string by concatenating all of the items in an array, separated by commas or a specified separator string.
+
+If the array has only one item, then it will be returned without using the specified separator.
+
+**_Syntax:_** `arr.join(separator)`
+
+Here `separator` is a string used to separate each item of the array. If omitted, the array items are separated with a comma.
+
+### sort()
+
+The `sort()` method sorts the items of an array and returns the sorted array. The default sort order is ascending.
+
+**_Syntax:_** `arr.sort()`
+
+```JS
+let arr = ["Wind", "Water", "Fire"];
+let combinedString = arr.join(",");
+console.log(combinedString);
+```
+
+# Todo Application Part - 6
+
+## Local Storage
+
+### The removeItem() Method
+
+The `removeItem()` method removes the specified storage object item based on the key.
+
+**_Syntax:_** `localStorage.removeItem(key)`
+
+_Key_ - Name of the key to be removed
+
+```JS
+localStorage.removeItem("todoList");
+```
