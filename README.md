@@ -1353,3 +1353,64 @@ else {
   textAreaElement.value = storedUserInputValue;
 }
 ```
+
+# Todo Application Part - 4
+
+## JavaScript Object Notation (JSON)
+
+JSON is a data representation format used for:
+
+- Storing Data (Client/Server)
+- Exchanging data between Client and Server
+
+### Supported Types
+
+- Number
+- String
+- Boolean
+- Array
+- Object
+- Null
+
+### JS Object vs JSON Object
+
+In JSON, all keys in an object must be enclosed with double-quotes. While in JS, this is not necessary.
+
+```Javascript
+let profile = {
+  name: "Rahul",
+  age: 29,
+  designation: "Web Developer"
+};
+```
+
+```JSON
+let profile = {
+  "name": "Rahul",
+  "age": 29,
+  "designation": "Web Developer"
+};
+```
+
+### JSON Methods
+
+**_JSON.stringify() :_** It converts the given value into JSON string.
+
+_syntax :_ `JSON.stringify(value)`
+
+**_JSON.parse() :_** It parses a JSON string and returns a JS object
+
+_syntax :_ `JSON.parse(string)`
+
+```Javascript
+let profile = {
+  name: "Rahul",
+  age: 29,
+  designation: "Web Developer"
+};
+let stringifiedProfile = JSON.stringify(profile);
+
+console.log(stringifiedProfile); // {"name":"Rahul","age":29,"designation":"Web Developer"}
+
+console.log(typeof(stringifiedProfile)); // string
+```

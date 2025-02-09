@@ -1,20 +1,23 @@
 let todoItemsContainer = document.getElementById("todoItemsContainer");
 let addTodoButton = document.getElementById("addTodoButton");
+let saveTodoButton = document.getElementById("saveTodoButton");
 
-let todoList = [
-  {
-    text: "Learn HTML",
-    uniqueNo: 1,
-  },
-  {
-    text: "Learn CSS",
-    uniqueNo: 2,
-  },
-  {
-    text: "Learn JavaScript",
-    uniqueNo: 3,
-  },
-];
+let todoList = getTodoListFromLocalStorage();
+
+function getTodoListFromLocalStorage() {
+  let stringifiedTodoList = localStorage.getItem("todoList");
+  let parsedTodoList = JSON.parse(stringifiedTodoList);
+
+  if (parsedTodoList === null) {
+    return [];
+  } else {
+    return parsedTodoList;
+  }
+}
+
+saveTodoButton.onclick = function () {
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+};
 
 addTodoButton.onclick = function () {
   onAddTodo();
@@ -93,6 +96,7 @@ function onAddTodo() {
     text: userInputValue,
     uniqueNo: todosCount,
   };
+  todoList.push(newTodo);
   createAndAppend(newTodo);
   userInputElement.value = "";
 }
