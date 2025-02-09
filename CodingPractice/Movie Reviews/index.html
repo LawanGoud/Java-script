@@ -28,7 +28,7 @@
     ></script>
   </head>
   <body>
-    <div class="container p-4">
+    <div class="container p-4" id="movieReviewContainer">
       <div class="row">
         <h1 class="col-12 reviews-heading text-center">Movie Reviews</h1>
         <div class="col-12 mb-4">
@@ -44,14 +44,21 @@
             rows="5"
             cols="40"
             id="reviewTextarea"
-            class="input-title w-100 p-2"
+            class="review-textarea w-100 p-2"
             placeholder="Enter your review"
           ></textarea>
           <div class="text-right mt-3">
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="addBtn"
+              onclick="onAddReview()"
+            >
+              Add
+            </button>
           </div>
         </div>
-        <div class="col-12" id="reviewsContainer"></div>
+        <div class="col-12 mt-4" id="reviewsContainer"></div>
       </div>
     </div>
     <script src="index.js"></script>
