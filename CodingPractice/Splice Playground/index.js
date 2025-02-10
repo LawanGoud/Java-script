@@ -1,1 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+let arr = [1, 7, 3, 1, 0, 20, 77];
+
+let startIndexInput = document.getElementById("startIndexInput");
+let deleteCountInput = document.getElementById("deleteCountInput");
+let itemToAddInput = document.getElementById("itemToAddInput");
+let spliceBtn = document.getElementById("spliceBtn");
+let updatedArray = document.getElementById("updatedArray");
+
+function convertArrtoJSONStringAndAppend() {
+  const stringifiedArr = JSON.stringify(arr);
+  updatedArray.textContent = stringifiedArr;
+}
+
+convertArrtoJSONStringAndAppend();
+
+spliceBtn.onclick = function () {
+  let startIndex = startIndexInput.value;
+  let deleteCount = deleteCountInput.value;
+  let itemToAdd = itemToAddInput.value;
+
+  if (startIndex === "") {
+    alert("Please enter a valid start index");
+    return;
+  }
+
+  if (deleteCount === "") {
+    alert("Please enter a valid delete count");
+  }
+
+  if (itemToAdd === "") {
+    arr.splice(parseInt(startIndex), parseInt(deleteCount));
+  } else {
+    arr.splice(parseInt(startIndex), parseInt(deleteCount), itemToAdd);
+  }
+
+  startIndexInput.value = "";
+  deleteCountInput.value = "";
+  itemToAddInput.value = "";
+  convertArrtoJSONStringAndAppend();
+};

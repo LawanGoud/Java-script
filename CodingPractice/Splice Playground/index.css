@@ -28,3 +28,13 @@
   font-weight: 600;
   font-size: 18px;
 }
+
+.updated-array-container {
+  background-color: #f3f3f3;
+  padding: 20px;
+}
+
+.updated-array {
+  font-family: "Bree Serif";
+  font-size: 16px;
+}
