@@ -1601,3 +1601,193 @@ _Key_ - Name of the key to be removed
 ```JS
 localStorage.removeItem("todoList");
 ```
+
+# Callbacks & Schedulers
+
+## Callback function
+
+A Callback is a function that is passed as an argument to another function.
+
+### Passing a function as an argument
+
+```Javascript
+function displayGreeting(displayName) {
+  console.log("Hello");
+  displayName();
+  console.log("Good Morning!");
+}
+
+displayGreeting(function() {
+  console.log("Rahul");
+});
+```
+
+```Javascript
+function displayGreeting(displayName) {
+  console.log("Hello");
+  displayName();
+  console.log("Good Morning!");
+}
+function displayRahul() {
+  console.log("Rahul");
+}
+displayGreeting(displayRahul);
+```
+
+```Javascript
+function displayGreeting(displayName) {
+  console.log("Hello");
+  displayName();
+  console.log("Good Morning!");
+}
+let displayRam = function() {
+  console.log("Ram");
+};
+displayGreeting(displayRam);
+```
+
+## Schedulers
+
+The Schedulers are used to schedule the execution of a callback function.
+
+There are different scheduler methods.
+
+- setInterval()
+- clearInterval()
+- setTimeout()
+- clearTimeout(), etc.
+
+### setInterval()
+
+The setInterval() method allows us to run a function at the specified interval of time repeatedly.
+
+**_Syntax_**: `setInterval(function, delay);`
+
+**_function_** - a callback function that is called repeatedly at the specified interval of time (delay).
+
+**_delay_** - time in milliseconds. (1 second = 1000 milliseconds)
+
+```Javascript
+let counter = 0;
+setInterval(function() {
+  console.log(counter);
+  counter = counter+1;
+}, 1000);
+```
+
+In the `setInterval()` method, the callback function repeatedly executes until the browser tab is closed or the scheduler is cancelled.
+
+When we call the `setInterval()` method, it returns a unique id. This unique Id is used to cancel the callback function execution.
+
+### clearInterval()
+
+The `clearInterval()` method cancels a schedule previously set up by calling `setInterval()`.
+
+To execute `clearInterval()` method, we need to pass the uniqueId returned by `setInterval()` as an argument.
+
+**_Syntax_**: `clearInterval(uniqueId)`;
+
+```Javascript
+let counter = 0;
+let uniqueId = setInterval(function() {
+  console.log(counter);
+  counter = counter+1;
+}, 1000);
+
+clearInterval(uniqueId);
+```
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <button id="setIntervalBtn">
+      Set Interval
+    </button>
+    <button id="clearIntervalBtn">
+      Clear Interval
+    </button>
+  </body>
+</html>
+```
+
+```Javascript
+let setIntervalBtnEl = document.getElementById("setIntervalBtn");
+let clearIntervalBtnEl = document.getElementById("clearIntervalBtn");
+
+let uniqueId = null;
+
+setIntervalBtnEl.onclick = function() {
+  let counter = 0;
+  uniqueId = setInterval(function() {
+    console.log(counter);
+    counter = counter + 1;
+  }, 1000);
+};
+
+clearIntervalBtnEl.onclick = function() {
+  clearInterval(uniqueId);
+  console.log("Interval cleared");
+};
+```
+
+### setTimeout()
+
+The `setTimeout()` method executes a function after the specified time.
+
+**_Syntax_**: `setTimeout(function, delay)`;
+
+**_function_** - a callback function that is called after the specified time (delay).
+
+**_delay_** - time in milliseconds.
+
+```Javascript
+let counter = 0;
+setTimeout(function() {
+  console.log(counter);
+  counter = counter + 1;
+}, 1000);
+```
+
+### clearTimeout()
+
+We can cancel the `setTimeout()` before it executes the callback function using the `clearTimeout()` method.
+
+To execute `clearTimeout()`, we need to pass the uniqueId returned by `setTimeout()` as an argument.
+
+**Syntax**: `clearTimeout(uniqueId)`;
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <button id="setTimeoutBtn">
+      Set Timeout
+    </button>
+  </body>
+</html>
+```
+
+```Javascript
+let setTimeoutBtnEl = document.getElementById("setTimeoutBtn");
+
+let uniqueId = null;
+
+setTimeoutBtnEl.onclick = function() {
+  setTimeout(function() {
+    console.log("Hello");
+  }, 3000);
+};
+```
