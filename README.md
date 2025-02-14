@@ -1791,3 +1791,803 @@ setTimeoutBtnEl.onclick = function() {
   }, 3000);
 };
 ```
+
+# Event Listeners and More Events
+
+## Event Listeners
+
+JavaScript offers three ways to add an Event Listener to a DOM element.
+
+- Inline event listeners
+- onevent listeners
+- addEventListener()
+
+### Inline event listeners
+
+```HTML
+<button onclick="greeting()">Greet</button>
+```
+
+```Javascript
+function greeting() {
+  console.log("Hi Rahul");
+}
+```
+
+### onevent listeners
+
+```HTML
+<button id="greetBtn">Greet</button>
+```
+
+```Javascript
+let greetBtnEl = document.getElementById("greetBtn");
+
+greetBtnEl.onclick = function() {
+  console.log("Hi Rahul");
+};
+```
+
+### addEventListener()
+
+It is a modern approach to add an event listener.
+
+**_Syntax_**: `element.addEventListener(event, function)`;
+
+**element** - HTML element
+**event** - event name
+**function** - Callback function
+
+```HTML
+<button id="greetBtn">Greet</button>
+```
+
+```Javascript
+let greetBtn = document.getElementById("greetBtn");
+
+greetBtn.addEventListener("click", function() {
+  console.log("Hi Rahul");
+});
+```
+
+## Operator
+
+### Comparison Operators
+
+| Operator                     | Usage   | Description                                                                   |
+| ---------------------------- | ------- | ----------------------------------------------------------------------------- |
+| Equal ( == )                 | a == b  | returns true if both a and b values are equal.                                |
+| Not equal ( != )             | a != b  | returns true if both a and b values are not equal.                            |
+| Strict equal ( === )         | a === b | returns true if both a and b values are equal and of the same type.           |
+| Strict not equal ( !== )     | a !== b | returns true if either a and b values are not equal or of the different type. |
+| Greater than ( > )           | a > b   | returns true if a value is greater than b value.                              |
+| Greater than or equal ( >= ) | a >= b  | returns true if a value is greater than or equal to b value.                  |
+| Less than ( < )              | a < b   | returns true if a value is less than b value.                                 |
+| Less than or equal ( <= )    | a <= b  | returns true if a value is less than or equal to b value.                     |
+
+### Logical Operators
+
+| Operator    | Usage    | Description                                  |
+| ----------- | -------- | -------------------------------------------- |
+| AND ( && )  | a && b   | returns true if both a and b values are true |
+| `OR (\|\|)` | `a\|\|b` | returns true if either a or b value is true  |
+| NOT ( ! )   | !a       | returns true if a value is false             |
+
+## More Events
+
+Events are the actions by which the user or browser interact with HTML elements.
+
+There are different types of events.
+
+- Keyboard Events
+- Mouse Events
+- Touch Events, and many more.
+
+### Keyboard Events
+
+Keyboard Event is the user interaction with the keyboard.
+
+The keyboard events are
+
+- keydown
+- keyup
+
+#### Keydown event
+
+The `keydown` event occurs when a key on the keyboard is pressed.
+
+**_Syntax_**: `element.addEventListener("keydown", function)`;
+
+```Javascript
+let inputEl = document.createElement("input");
+
+function printKeydown() {
+  console.log("key pressed");
+}
+
+inputEl.addEventListener("keydown", printKeydown);
+document.body.appendChild(inputEl);
+```
+
+#### Keyup event
+
+The `keyup` event occurs when a key on the keyboard is released.
+
+**Syntax**: `element.addEventListener("keyup", function)`;
+
+### Event Object
+
+Whenever an event happens, the browser creates an event object.
+
+It consists of information about the event that has happened.
+
+It consists of many properties and methods.
+
+- type
+- target
+- key
+- timeStamp
+- stopPropagation, and many more.
+
+#### Properties & Methods
+
+For any event, event-specific properties and methods will be present.
+
+For Example,
+
+The `keydown` event has `key` property, whereas the `onclick` event doesn't have it.
+
+**event.type :**
+The event.type property contains the type of event occurred like click, keydown, etc.
+
+```Javascript
+let inputEl = document.createElement("input");
+
+function printKeydown(event) {
+  console.log(event.type);  // keydown
+}
+
+inputEl.addEventListener("keydown", printKeydown);
+document.body.appendChild(inputEl);
+```
+
+**event.target :** The `event.target` property contains the HTML element that triggered the event.
+
+```Javascript
+let inputElement = document.createElement("input");
+
+function printKeydown(event) {
+  console.log(event.target);  // <input></input>
+}
+
+inputElement.addEventListener("keydown", printKeydown);
+document.body.appendChild(inputElement);
+```
+
+**event.key:** The `event.key` property contains the value of the key pressed by the user.
+
+```Javascript
+let inputElement = document.createElement("input");
+
+function printKeydown(event) {
+  console.log(event.key);
+}
+
+inputElement.addEventListener("keydown", printKeydown);
+document.body.appendChild(inputElement);
+```
+
+| Keyboard key | event.key value |
+| ------------ | --------------- |
+| Enter        | Enter           |
+| a            | a               |
+| A            | A               |
+| 1            | 1               |
+| \_           | \_              |
+| <            | <               |
+
+# BOOM Project
+
+# Hypertext Transfer Protocol (HTTP)
+
+## Web Resources
+
+A Web Resource is any data that can be obtained via internet.
+
+A resource can be
+
+- HTML document
+- CSS document
+- JSON Data or Plain text
+- Image, Video, etc.
+
+## Uniform Resource Locator (URL)
+
+URL is a text string that specifies where a resource can be found on the internet.
+
+We can access web resources using the URL.
+
+**_Syntax_**: `protocol://domainName/path?query-parameters`
+
+In the URL `http://www.flipkart.com/watches?type=digital&rating=4`,
+
+- `http` is a **Protocol**
+- `www.flipkart.com` is a **Domain Name**
+- `/watches` is a Path
+- `type=digital&rating=4` is the Query Parameters
+
+### Protocol
+
+A protocol is a standard set of rules that allow electronic devices to communicate with each other.
+
+There are different types of protocols.
+
+- Hypertext Transfer Protocol (HTTP)
+- Hypertext Transfer Protocol Secure (HTTPS)
+- Web Sockets, etc.
+
+#### HTTP
+
+The Hypertext Transfer Protocol (HTTP), is a protocol used to transfer resources over the web.
+
+_Examples:_ Internet forums, Educational sites, etc.
+
+**_HTTP Request:_** Message sent by the client
+
+**_HTTP Response:_** Message sent by the server
+
+#### HTTPS
+
+In Hypertext Transfer Protocol Secure (HTTPS), information is transferred in an
+encrypted format and provides secure communication.
+
+_Examples:_ Banking Websites, Payment gateway, Login Pages, Emails and Corporate Sector Websites, etc.
+
+#### Domain Name
+
+It indicates which Web server is being requested.
+
+#### Path
+
+The path is to identify the resources on the server.
+
+Examples:
+
+- /watches in `http://www.flipkart.com/watches`
+- /electronics/laptops/gaming in `http://www.flipkart.com/electronics/laptops/gaming`
+
+#### Query Parameters
+
+Query parameters add some criteria to the request for the resource.
+
+Multiple query parameters can be added by using an `&` ( ampersand ) symbol.
+
+For example,
+`http://www.flipkart.com/watches?type=digital&rating=4`
+
+## HTTP
+
+### HTTP Requests
+
+HTTP requests are messages sent by the client to initiate an action on the server.
+
+HTTP request includes
+
+- Start Line
+- Headers
+- Body
+
+#### Start Line
+
+A Start Line specifies a
+
+- URL
+- HTTP Method
+- HTTP Version
+
+**HTTP Methods**
+
+The HTTP Request methods indicate the desired action to be performed for a given resource.
+
+| Methods         | Description                                                                                 |
+| --------------- | ------------------------------------------------------------------------------------------- |
+| GET (Read)      | Request for a resource(s) from the server                                                   |
+| POST (Create)   | Submit data to the server                                                                   |
+| PUT (Update)    | The data within the request must be stored at the URL supplied, replacing any existing data |
+| DELETE (Delete) | Delete a resource(s)                                                                        |
+
+**_HTTP Version_**
+
+| Year | Version  |
+| ---- | -------- |
+| 1991 | HTTP/0.9 |
+| 1994 | HTTPS    |
+| 1996 | HTTP/1.0 |
+| 1997 | HTTP/1.1 |
+| 2015 | HTTP/2   |
+| 2019 | HTTP/3   |
+
+#### Headers
+
+HTTP Headers let the client and the server to pass additional information with an HTTP request or response.
+
+#### Body
+
+We place the data in the Request body when we want to send data to the server.
+
+For example, form details filled by the user.
+
+HTTP Requests
+
+- Start Line
+
+  - URL
+    - Protocol
+      - HTTP
+      - HTTPS
+    - Domain Name
+    - Path
+    - Query Parameters
+  - HTTP Method
+    - GET (Read)
+    - POST (Create)
+    - PUT (Update)
+    - DELETE (Delete)
+  - HTTP Version
+
+- Headers
+- Body
+
+### HTTP Responses
+
+HTTP responses are messages sent by the server as an answer to the clients request.
+
+HTTP Response includes
+
+- Status Line
+- Headers
+- Body
+
+### Status Line
+
+A Status line specifies a
+
+- HTTP version
+- Status code
+- Status text
+
+**Status code**
+
+Status codes Indicate whether an HTTP request has been successfully completed or not.
+
+| Status Code Series | Indicates    |
+| ------------------ | ------------ |
+| 1XX                | Information  |
+| 2XX                | Success      |
+| 3XX                | Redirection  |
+| 4XX                | Client Error |
+| 5XX                | Server Error |
+
+- 200 ( Success ) - Indicates that the request has succeeded
+
+- 201 ( Created ) - The request has succeeded and a new resource has been created as a result
+
+**_Status text_**
+
+| Status Code | Status Text       |
+| ----------- | ----------------- |
+| 200         | OK                |
+| 204         | No Response       |
+| 301         | Moved Permanently |
+| 401         | Unauthorized      |
+| 403         | Forbidden         |
+| 404         | Not Found         |
+
+#### Body
+
+Response Body contains the resource data that was requested by the client.
+
+HTTP Responses
+
+- Status Line
+  - HTTP version
+  - Status code
+    - 1XX
+    - 2XX
+    - 3XX
+    - 4XX
+    - 5XX
+  - Status text
+- Headers
+- Body
+
+# HTTP Requests using JS
+
+## Fetch
+
+The `fetch()` method is used to fetch resources across the Internet.
+
+**Syntax**: `fetch(URL, OPTIONS)`
+
+URL - URL of the resource
+OPTIONS - Request Configuration
+
+### Request Configuration
+
+We can configure the fetch request with many options like,
+
+- Request Method
+- Headers
+- Body
+- Credentials
+- Cache, etc.
+
+We can configure a request by passing an options object with required properties and their values.
+
+For example,
+
+```Javascript
+let options = {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+};
+```
+
+## Making HTTP Requests using Fetch
+
+The method property value in the options object can be `GET`, `POST`, `PUT`, `DELETE`, etc. The default method is `GET`.
+
+### GET
+
+The `GET` method can be used to retrieve (get) data from a specified resource.
+
+For example,
+
+```Javascript
+let options = {
+  method: "GET"
+};
+
+fetch("https://gorest.co.in/public-api/users", options);
+```
+
+### POST
+
+The POST method can be used to send data to the server.
+
+```Javascript
+let data = {
+  name: "Rahul",
+  gender: "Male",
+  email: "rahul@gmail.com",
+  status: "Active"
+};
+
+let options = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: "Bearer ACCESS-TOKEN"
+  },
+  body: JSON.stringify(data)
+};
+
+fetch("https://gorest.co.in/public-api/users", options)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(jsonData) {
+    console.log(jsonData);
+  });
+```
+
+### PUT
+
+The PUT method can be used to update the existing resource.
+
+```Javascript
+let data = {
+  name: "Rahul Attuluri"
+};
+
+let options = {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: "Bearer ACCESS-TOKEN"
+  },
+  body: JSON.stringify(data)
+};
+
+fetch("https://gorest.co.in/public-api/users/1359", options)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(jsonData) {
+    console.log(jsonData);
+  });
+```
+
+### DELETE
+
+The DELETE method can be used to delete the specified resource.
+
+```Javascript
+let options = {
+  method: "DELETE",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: "Bearer ACCESS-TOKEN"
+  }
+};
+
+fetch("https://gorest.co.in/public-api/users/1359", options)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(jsonData) {
+    console.log(jsonData);
+  });
+```
+
+```Javascript
+let data = {
+  name: "Rahul",
+  gender: "Male",
+  email: "rahul@gmail.com",
+  status: "Active"
+};
+
+let options = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: "Bearer 5b8faa3592569928a8aa07468fac524e3255d48825a42c698da9b7eb99ef1415"
+  },
+  body: JSON.stringify(data)
+};
+
+fetch("https://gorest.co.in/public-api/users", options)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(jsonData) {
+    console.log(jsonData);
+  });
+```
+
+## HTTP Response Object Properties and Methods
+
+Response Object provides multiple properties to give more information about the HTTP Response.
+
+- status (number) - HTTP status code
+- statusText (string) - Status text as reported by the server, e.g. "Unauthorized"
+- headers
+- url
+- text() - Getting text from response
+- json() - Parses the response as JSON
+
+For example,
+
+```Javascript
+let options = {
+  method: "GET"
+};
+
+fetch("https://gorest.co.in/public-api/users", options)
+  .then(function(response) {
+    return response.status;
+  })
+  .then(function(status) {
+    console.log(status);  // 200
+  });
+```
+
+In the above example, we can get the response status as `200` when the request is success.
+
+```Javascript
+let options = {
+  method: "GET"
+};
+
+fetch("https://gorest.co.in/public-api/users", options)
+  .then(function(response) {
+    return response.status;
+  })
+  .then(function(status) {
+    console.log(status);
+  });
+```
+
+# Wikipedia Search Application
+
+## HTML Input Element
+
+### Search
+
+The HTML input element with the type search is designed for the user to enter the search queries.
+
+```HTML
+<input type="search" />
+```
+
+## Bootstrap Components
+
+### Spinner
+
+The Spinners can be used to show the loading state of the page.
+
+```HTML
+<div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+```
+
+## Wikipedia Search Application
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="wiki-search-header text-center">
+        <img class="wiki-logo" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/wiki-logo-img.png" />
+        <br />
+        <input placeholder="Type a keyword and press Enter to search" type="search" class="search-input w-100" id="searchInput" />
+      </div>
+      <div class="d-none" id="spinner">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </body>
+</html>
+```
+
+```CSS
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.main-container {
+  font-family: "Roboto";
+}
+
+.wiki-search-header {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d5cdcd;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  margin-bottom: 40px;
+}
+
+.wiki-logo {
+  margin-bottom: 30px;
+  width: 150px;
+}
+
+.search-input {
+  font-size: 18px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d5cdcd;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.search-results {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.result-item {
+  margin-bottom: 20px;
+}
+
+.result-title {
+  font-size: 22px;
+}
+
+.link-description {
+  color: #444444;
+  font-size: 15px;
+}
+
+.result-url {
+  color: #006621;
+  text-decoration: none;
+}
+```
+
+```Javascript
+let searchInputEl = document.getElementById("searchInput");
+
+let searchResultsEl = document.getElementById("searchResults");
+
+let spinnerEl = document.getElementById("spinner");
+
+function createAndAppendSearchResult(result) {
+  let { link, title, description } = result;
+
+  let resultItemEl = document.createElement("div");
+  resultItemEl.classList.add("result-item");
+
+  let titleEl = document.createElement("a");
+  titleEl.href = link;
+  titleEl.target = "_blank";
+  titleEl.textContent = title;
+  titleEl.classList.add("result-title");
+  resultItemEl.appendChild(titleEl);
+
+  let titleBreakEl = document.createElement("br");
+  resultItemEl.appendChild(titleBreakEl);
+
+  let urlEl = document.createElement("a");
+  urlEl.classList.add("result-url");
+  urlEl.href = link;
+  urlEl.target = "_blank";
+  urlEl.textContent = link;
+  resultItemEl.appendChild(urlEl);
+
+  let linkBreakEl = document.createElement("br");
+  resultItemEl.appendChild(linkBreakEl);
+
+  let descriptionEl = document.createElement("p");
+  descriptionEl.classList.add("link-description");
+  descriptionEl.textContent = description;
+  resultItemEl.appendChild(descriptionEl);
+
+  searchResultsEl.appendChild(resultItemEl);
+}
+
+function displayResults(searchResults) {
+  spinnerEl.classList.add("d-none");
+
+  for (let result of searchResults) {
+    createAndAppendSearchResult(result);
+  }
+}
+
+function searchWikipedia(event) {
+  if (event.key === "Enter") {
+
+    spinnerEl.classList.remove("d-none");
+    searchResultsEl.textContent = "";
+
+    let searchInput = searchInputEl.value;
+    let url = "https://apis.ccbp.in/wiki-search?search=" + searchInput;
+    let options = {
+      method: "GET"
+    };
+
+    fetch(url, options)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (jsonData) {
+        let { search_results } = jsonData;
+        displayResults(search_results);
+      });
+  }
+}
+
+searchInputEl.addEventListener("keydown", searchWikipedia);
+```
