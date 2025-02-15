@@ -2013,8 +2013,8 @@ In the URL `http://www.flipkart.com/watches?type=digital&rating=4`,
 
 - `http` is a **Protocol**
 - `www.flipkart.com` is a **Domain Name**
-- `/watches` is a Path
-- `type=digital&rating=4` is the Query Parameters
+- `/watches` is a **Path**
+- `type=digital&rating=4` is the **Query Parameters**
 
 ### Protocol
 
