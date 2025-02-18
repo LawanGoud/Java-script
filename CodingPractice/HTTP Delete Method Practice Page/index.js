@@ -1,21 +1,20 @@
-let requestBodyEl = document.getElementById("requestBody");
-let sendPostRequestBtnEl = document.getElementById("sendPostRequestBtn");
+let userInputEl = document.getElementById("userInput");
+let sendDeleteRequestBtnEl = document.getElementById("sendDeleteRequestBtn");
 let loadingEl = document.getElementById("loading");
 let requestStatusEl = document.getElementById("requestStatus");
 let httpResponseEl = document.getElementById("httpResponse");
 
-function sendPostHTTPRequest() {
-  let requestUrl = "https://gorest.co.in/public/v2/users";
-  let requestBody = requestBodyEl.value;
+function sendDeleteHTTPRequest() {
+  let userInputVal = userInputEl.value;
+  let requestUrl = "https://gorest.co.in/public/v2/users" + userInputVal;
   let options = {
-    method: "POST",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
       Authorization:
         "Bearer a3eb50d4564c02afdde3e7d090a9f89876ee2004887c3b8dce40977ca5c24ba4",
     },
-    body: JSON.stringify(requestBody),
   };
   loadingEl.classList.remove("d-none");
   requestStatusEl.classList.add("d-none");
@@ -34,4 +33,4 @@ function sendPostHTTPRequest() {
       httpResponseEl.textContent = httpResponse;
     });
 }
-sendPostRequestBtnEl.addEventListener("click", sendPostHTTPRequest);
+sendDeleteRequestBtnEl.addEventListener("click", sendDeleteHTTPRequest);
