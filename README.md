@@ -2591,3 +2591,156 @@ function searchWikipedia(event) {
 
 searchInputEl.addEventListener("keydown", searchWikipedia);
 ```
+
+# Forms
+
+## HTML Forms
+
+The HTML Forms can be used to collect data from the user.
+
+Forms are of different kinds:
+
+- Login/Sign in Form
+- Registration Form
+- Contact Us Form, etc.
+
+### HTML Form Element
+
+The HTML `form` element can be used to create HTML forms. It is a container that can contain different types of Input elements like Text Fields, Checkboxes, etc.
+
+```HTML
+<form></form>
+```
+
+**Note**
+
+Whenever we click a button or press `Enter` key while editing any input field in the form, the `submit` event will be triggered.
+
+## Event Object Methods
+
+### preventDefault
+
+The `preventDefault()` method prevents the occurrence of default action.
+
+Here in the form, it prevents the default behaviour of the `submit` event.
+
+```Javascript
+let myFormEl = document.getElementById("myForm");
+
+myFormEl.addEventListener("submit", function(event) {
+  event.preventDefault();
+});
+```
+
+## Event Types
+
+There are different types of events.
+
+- Keyboard Events
+- Mouse Events
+- Touch Events
+- Form Events, etc.
+
+### Form Events
+
+A Form Event is an event that can occur within a form.
+
+Some of the form events are:
+
+- blur
+- focus
+- change, etc.
+
+#### Blur Event
+
+The `blur` event happens when an HTML element has lost focus.
+
+```Javascript
+let nameEl = document.getElementById("name");
+
+nameEl.addEventListener("blur", function(event) {
+  console.log("blur event triggered");
+});
+```
+
+# Form Part - 2
+
+## HTML Select Element
+
+The HTML `select` element is used to create a drop-down list.
+
+```HTML
+<select></select>
+```
+
+## HTML Option Element
+
+The HTML `option` element is used to create the menu option of a drop-down list.
+
+The text content of the HTML `option` element is used as a label.
+
+```HTML
+<select>
+  <option>Active</option>
+</select>
+```
+
+### The value Attribute
+
+Every HTML `option` element should contain the HTML `value` attribute.
+
+```HTML
+<option value="Active">Active</option>
+```
+
+## HTML Input Element
+
+### Radio
+
+The HTML input `radio` element is used to select one option among a list of given options.
+
+```HTML
+<input type="radio" id="genderMale" value="Male" />
+<input type="radio" id="genderFemale" value="Female" />
+```
+
+#### HTML name attribute
+
+The HTML `name` Attribute specifies the name for an HTML Element.
+
+```HTML
+<input type="radio" value="Male" name="gender" />
+```
+
+#### Radio Group
+
+All the radio buttons with same name collectively called as a radio group.
+
+We can select only one radio button within a radio group.
+
+```HTML
+<input type="radio" value="Male" name="gender" />
+<input type="radio" value="Female" name="gender" />
+```
+
+## Boolean Attributes
+
+For the HTML Boolean attributes, we only specify the name of the HTML attribute.
+
+The presence of a boolean attribute represents the true value, and the absence represents the false value.
+
+### HTML selected attribute
+
+The `selected` attribute specifies that an option should be pre-selected when the page loads.
+
+```HTML
+<option value="Active" selected>Active</option>
+```
+
+### HTML checked attribute
+
+The `checked` attribute specifies that an input element should be pre-selected (checked) when the page loads.
+
+```HTML
+<input type="radio" id="genderMale" value="Male" name="gender" checked />
+```
