@@ -2744,3 +2744,983 @@ The `checked` attribute specifies that an input element should be pre-selected (
 ```HTML
 <input type="radio" id="genderMale" value="Male" name="gender" checked />
 ```
+
+# More Modern JS Concepts
+
+## Spread Operator
+
+The Spread Operator is used to unpack an iterable (e.g. an array, object, etc.) into individual elements.
+
+### Spread Operator with Arrays
+
+```Javascript
+let arr1 = [2, 3];
+let arr2 = [1, ...arr1, 4];
+
+console.log(arr2);  // [1, 2, 3, 4]
+```
+
+#### Creating a Copy
+
+```Javascript
+let arr1 = [2, 3];
+let arr2 = [...arr1];
+
+console.log(arr2);  // [2, 3]
+```
+
+#### Concatenation
+
+```Javascript
+let arr1 = [2, 3];
+let arr2 = [4, 5];
+let arr3 = [...arr1, ...arr2];
+
+console.log(arr3); // [2, 3, 4, 5]
+```
+
+### Spread Operator with Objects
+
+```Javascript
+let person = { name: "Rahul", age: 27 };
+let personDetails = { ...person, city: "Hyderabad" };
+
+console.log(personDetails);  // Object {name: "Rahul", age: 27, city: "Hyderabad"}
+```
+
+#### Creating a Copy
+
+```Javascript
+let person = { name: "Rahul", age: 27 };
+let personDetails = { ...person };
+
+console.log(personDetails);  // Object {name: "Rahul", age: 27}
+```
+
+#### Concatenation
+
+```Javascript
+let person = { name: "Rahul", age: 27 };
+let address = { city: "Hyderabad", pincode: 500001 };
+let personDetails = { ...person, ...address };
+
+console.log(personDetails);  // Object {name: "Rahul", age: 27, city: "Hyderabad", pincode: 500001}
+```
+
+### Spread Operator with Function Calls
+
+The Spread Operator syntax can be used to pass an array of arguments to the function. Extra values will be ignored if we pass more arguments than the function parameters.
+
+```Javascript
+function add(a, b, c) {
+  return a + b + c;
+}
+let numbers = [1, 2, 3, 4, 5];
+
+console.log(add(...numbers));  // 6
+```
+
+## Rest Parameter
+
+With Rest Parameter, we can pack multiple values into an array.
+
+```Javascript
+function numbers(...args) {
+  console.log(args);  // [1, 2, 3]
+}
+
+numbers(1, 2, 3);
+```
+
+### Destructuring arrays and objects with Rest Parameter Syntax
+
+#### Arrays
+
+```Javascript
+let [a, b, ...rest] = [1, 2, 3, 4, 5];
+
+console.log(a);  // 1
+console.log(b);  // 2
+console.log(rest);  // [3, 4, 5]
+```
+
+#### Objects
+
+```Javascript
+let { firstName, ...rest } = {
+  firstName: "Rahul",
+  lastName: "Attuluri",
+  age: 27
+};
+
+console.log(firstName);  // Rahul
+console.log(rest);  // Object {lastName: "Attuluri", age: 27}
+```
+
+<b>Note :</b>
+The Rest parameter should be the last parameter.
+
+```Javascript
+function numbers(a, b, ...rest) {
+  console.log(a);  // 1
+  console.log(b);  // 2
+  console.log(rest);  // [3, 4, 5]
+}
+numbers(1, 2, 3, 4, 5);
+```
+
+```Javascript
+function numbers(a, ...rest, b) {
+  console.log(a);
+  console.log(rest);
+  console.log(b);
+}
+numbers(1, 2, 3, 4, 5);  // Uncaught SyntaxError: Rest parameter must be last formal parameter
+```
+
+## Functions
+
+### Default Parameters
+
+The Default Parameters allow us to give default values to function parameters.
+
+```Javascript
+function numbers(a = 2, b = 5) {
+  console.log(a);  // 3
+  console.log(b);  // 5
+}
+
+numbers(3);
+```
+
+## Template Literals (Template Strings)
+
+The Template Literals are enclosed by the backticks.
+
+They are used to:
+
+1. Embed variables or expressions in the strings
+2. Write multiline strings
+
+We can include the variables or expressions using a dollar sign with curly braces `${}`.
+
+```Javascript
+let firstName = "Rahul";
+
+console.log(`Hello ${firstName}!`);  // Hello Rahul!
+```
+
+# More Modern JS Concepts Part - 2
+
+## Operators
+
+### Ternary Operator
+
+A Ternary Operator can be used to replace `if...else` statements in some situations.
+
+**Syntax:** `condition ? expressionIfTrue : expressionIfFalse`
+
+```Javascript
+let speed = 70;
+let message = speed >= 100 ? "Too Fast" : "OK";
+
+console.log(message);  // OK
+```
+
+## Conditional Statements
+
+### Switch Statement
+
+A Switch statement is a conditional statement like `if...else` statement used in decision making.
+
+<b>Syntax:</b>
+
+```Javascript
+switch (expression) {
+  case value1:
+    /*Statements executed when the
+    result of expression matches value1*/
+    break;
+  case value2:
+    /*Statements executed when the
+    result of expression matches value2*/
+    break;
+  ...
+  case valueN:
+    /*Statements executed when the
+    result of expression matches valueN*/
+    break;
+  default:
+    /*Statements executed when none of
+    the values match the value of the expression*/
+    break;
+}
+```
+
+```Javascript
+let day = 1;
+switch (day) {
+  case 0:
+    console.log("Sunday");
+    break;
+  case 1:
+    console.log("Monday");  // Monday
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  case 4:
+    console.log("Thursday");
+    break;
+  case 5:
+    console.log("Friday");
+    break;
+  case 6:
+    console.log("Saturday");
+    break;
+  default:
+    console.log("Invalid");
+    break;
+}
+```
+
+#### What happens if we forgot a break
+
+If there is no `break` statement, then the execution continues with the next case until the `break` statement is met.
+
+```Javascript
+let day = 4;
+switch (day) {
+  case 0:
+    console.log("Sunday");
+    break;
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  case 4:
+    console.log("Thursday");
+  case 5:
+    console.log("Friday");
+  case 6:
+    console.log("Saturday");
+  default:
+    console.log("Invalid");
+}
+```
+
+## Defining Functions
+
+There are multiple ways to define a function.
+
+- Function Declaration
+- Function Expression
+- Arrow Functions
+- Function Constructor, etc.
+
+### Arrow Functions
+
+An Arrow function is a simple and concise syntax for defining functions.
+
+It is an alternative to a function expression.
+
+<b>Syntax:</b>
+
+```Javascript
+let sum = (param1, param2, …) => {
+  // statement(s)
+};
+sum();
+```
+
+```Javascript
+let sum = (a, b) => {
+  let result = a + b;
+  return result;
+};
+console.log(sum(4, 3));
+```
+
+#### Simple Expressions
+
+In arrow functions, the `return` statement and curly braces are not required for simple expressions.
+
+```Javascript
+let sum = (a, b) => a + b;
+
+console.log(sum(4, 3));  // 7
+```
+
+#### One parameter
+
+If there is only one parameter, then parentheses are not required.
+
+```Javascript
+let greet = name => `Hi ${name}!`;
+
+console.log(greet("Rahul"));  // Hi Rahul!
+```
+
+#### No parameters
+
+If there are no parameters, parentheses will be empty, but they should be present.
+
+```Javascript
+let sayHi = () => "Hello!";
+
+console.log(sayHi());  // Hello!
+```
+
+#### Returning Objects
+
+```Javascript
+let createUser = name => {
+  return {
+    firstName: name
+  };
+};
+
+console.log(createUser("Rahul"));  // Object {firstName: "Rahul"}
+```
+
+**_Simple Expression_**
+
+```Javascript
+let createUser = name => { firstName: "Rahul" };
+
+console.log(createUser());  // undefined
+```
+
+JavaScript considers the two curly braces as a code block, but not as an object syntax.
+
+So, wrap the object with parentheses to distinguish with a code block.
+
+```Javascript
+let createUser = name => ({ firstName: "Rahul" });
+
+console.log(createUser());  // Object {firstName: "Rahul"}
+```
+
+# Factory and Constructor Functions
+
+## Factory Function
+
+A Factory function is any function that returns a new object for every function call.
+
+The Function name should follow the `camelCase` naming convention.
+
+**Syntax**
+
+```Javascript
+function functionName(parameter1, parameter2, ...) {
+  return {
+    property1: parameter1,
+    property2: parameter2,
+    ...
+    ...
+  }
+}
+let myObject = functionName(arg1, arg2, ...)
+```
+
+```Javascript
+function createCar(color, brand) {
+  return {
+    color: color,
+    brand: brand,
+    start: function() {
+      console.log("started");
+    }
+  };
+}
+
+let car1 = createCar("blue", "Audi");
+let car2 = createCar("red", "Tata");
+let car3 = createCar("green", "BMW");
+
+console.log(car1);  // Object { color: "blue", brand: "Audi", start: ƒ() }
+console.log(car2);  // Object { color: "red", brand: "Tata", start: ƒ() }
+console.log(car3);  // Object { color: "green", brand: "BMW", start: ƒ() }
+```
+
+### Shorthand Notations
+
+```Javascript
+function createCar(color, brand) {
+  return {
+    color,
+    brand,
+    start() {
+      console.log("started");
+    }
+  };
+}
+
+let car1 = createCar("blue", "Audi");
+let car2 = createCar("red", "Tata");
+let car3 = createCar("green", "BMW");
+
+console.log(car1);  // Object { color: "blue", brand: "Audi", start: ƒ() }
+console.log(car2);  // Object { color: "red", brand: "Tata", start: ƒ() }
+console.log(car3);  // Object { color: "green", brand: "BMW", start: ƒ() }
+```
+
+## Constructor Function
+
+A regular function that returns a new object on calling with the new operator. The created new object is called an `Instance`.
+
+The Function name should follow the `PascalCase` naming convention.
+
+**_Syntax:_**
+
+```Javascript
+function FunctionName(parameter1, parameter2, ...) {
+  this.property1 = parameter1;
+  this.property2 = parameter2;
+  ...
+  ...
+}
+let myObject = new FunctionName(arg1, arg2, ...)
+```
+
+### The new Operator
+
+When a function is called with the new operator, it does the following steps:
+
+- Creates an empty object and assigns it to this
+- Return this
+
+```Javascript
+function Car(color, brand) {
+  this.color = color;
+  this.brand = brand;
+  this.start = function() {
+    console.log("started");
+  };
+}
+
+let car1 = new Car("blue", "Audi");
+console.log(car1);  // Car { }
+```
+
+Here,
+
+- `car1` is instance
+- `car1.start()` is instance method
+- `car1.color`, `car1.brand` are instance properties
+
+### Factory vs Constructor Functions
+
+| Factory Functions                              | Constructor Functions                   |
+| ---------------------------------------------- | --------------------------------------- |
+| Follows camelCase notation                     | Follows PascalCase notation             |
+| Doesn't need new operator for function calling | Needs new operator for function calling |
+| Explicitly need to return the object           | Created object returns implicitly       |
+
+## JS Functions
+
+Similar to Objects, Functions also have properties and methods.
+
+### Default Properties
+
+- name
+- length
+- constructor
+- prototype, etc.
+
+### Default Methods
+
+- apply()
+- bind()
+- call()
+- toString(), etc.
+
+### Function Properties
+
+#### The name Property
+
+This property returns the name of the function.
+
+```Javascript
+function Car(color, brand) {
+  this.color = color;
+  this.brand = brand;
+  this.start = function() {
+    console.log("started");
+  };
+}
+console.log(Car.name);  // Car
+```
+
+#### The length Property
+
+This property returns the number of parameters passed to the function.
+
+```Javascript
+function Car(color, brand) {
+  this.color = color;
+  this.brand = brand;
+  this.start = function() {
+    console.log("started");
+  };
+}
+console.log(Car.length);  // 2
+```
+
+#### The `typeof` function
+
+```Javascript
+function Car(color, brand) {
+  this.color = color;
+  this.brand = brand;
+  this.start = function() {
+    console.log("started");
+  };
+}
+console.log(typeof(Car));  // function
+```
+
+## The Constructor Property
+
+Every object in JavaScript has a constructor property.
+
+The constructor property refers to the constructor function that is used to create the object.
+
+```Javascript
+function Car(color, brand) {
+  this.color = color;
+  this.brand = brand;
+  this.start = function() {
+    console.log("started");
+  };
+}
+let car1 = new Car("blue", "Audi");
+console.log(car1.constructor);  // f Car(color, brand) {}
+```
+
+## Built-in Constructor Function
+
+These are the Constructor functions provided by JavaScript.
+
+- function Date()
+- function Error()
+- function Promise()
+- function Object()
+- function String()
+- function Number(), etc.
+
+In JavaScript, date and time are represented by the Date object. The Date object provides the date and time information and also provides various methods.
+
+### Creating Date Objects
+
+There are four ways to create a date object.
+
+- new Date()
+- new Date(milliseconds)
+- new Date(datestring)
+- new Date(year, month, day, hours, minutes, seconds, milliseconds)
+
+#### new Date()
+
+You can create a date object without passing any arguments to the `new Date()` constructor function.
+
+```Javascript
+let now = new Date();
+
+console.log(now);  // Tue Feb 02 2021 19:10:29 GMT+0530 (India Standard Time) { }
+console.log(typeof(now));  // object
+```
+
+Here, `new Date()` creates a new date object with the current date and local time.
+
+**Note :**
+
+- Coordinated Universal Time (UTC) - It is the global standard time defined by the World Time Standard. (This time is historically known as Greenwich Mean Time, as UTC lies along the meridian that includes London and nearby Greenwich in the United Kingdom.)
+- Local Time - The user's device provides the local time.
+
+#### new Date(milliseconds)
+
+The `Date` object contains a number that represents milliseconds since 1 January 1970 UTC.
+
+The `new Date(milliseconds)` creates a new date object by adding the milliseconds to zero time.
+
+```Javascript
+let time1 = new Date(0);
+console.log(time1);  // Thu Jan 01 1970 05:30:00 GMT+0530 (India Standard Time) { }
+
+// 100000000000 milliseconds from 1 Jan 1970 UTC
+let time2 = new Date(100000000000);
+console.log(time2);  // Sat Mar 03 1973 15:16:40 GMT+0530 (India Standard Time) { }
+```
+
+<b>Note: </b> 1000 milliseconds is equal to 1 second.
+
+#### new Date(date string)
+
+The `new Date(date string)` creates a new date object from a date string.
+
+**Syntax:** `new Date(datestring)`;
+
+```Javascript
+let date = new Date("2021-01-28");
+
+console.log(date);  // Thu Jan 28 2021 05:30:00 GMT+0530 (India Standard Time) { }
+```
+
+You can also pass only the year and month or only the year. For example,
+
+```Javascript
+let date = new Date("2020-08");
+console.log(date);  // Sat Aug 01 2020 05:30:00 GMT+0530 (India Standard Time) { }
+
+let date1 = new Date("2020");
+console.log(date1);  // Wed Jan 01 2020 05:30:00 GMT+0530 (India Standard Time) { }
+```
+
+**Short date format**
+
+```Javascript
+// short date format "MM/DD/YYYY"
+let date = new Date("03/25/2015");
+console.log(date);  // Wed Mar 25 2015 00:00:00 GMT+0530 (India Standard Time) { }
+```
+
+**Long date format**
+
+```Javascript
+// long date format "MMM DD YYYY"
+let date1 = new Date("Jul 1 2021");
+console.log(date1);  // Thu Jul 01 2021 00:00:00 GMT+0530 (India Standard Time) { }
+```
+
+Month and Day can be in any order
+
+```Javascript
+let date2 = new Date("1 Jul 2021");
+console.log(date2);  // Thu Jul 01 2021 00:00:00 GMT+0530 (India Standard Time) { }
+```
+
+The month can be full or abbreviated. Also, month names are case insensitive.
+
+```Javascript
+let date3 = new Date("July 1 2021");
+console.log(date3);  // Thu Jul 01 2021 00:00:00 GMT+0530 (India Standard Time) { }
+
+// commas are ignored
+let date4 = new Date("JULY, 1, 2021");
+console.log(date4);  // Thu Jul 01 2021 00:00:00 GMT+0530 (India Standard Time) { }
+```
+
+#### new Date(year, month, day, hours, minutes, seconds, milliseconds)
+
+It creates a new date object by passing a specific date and time.
+
+```Javascript
+let time1 = new Date(2021, 1, 20, 4, 12, 11, 0);
+console.log(time1);  // Sat Feb 20 2021 04:12:11 GMT+0530 (India Standard Time) { }
+```
+
+Here, months are counted from 0 to 11. January is 0 and December is 11.
+
+The passed argument has a specific order.
+
+If four numbers are passed, it represents the year, month, day and hours.
+
+```Javascript
+let time1 = new Date(2021, 1, 20, 4);
+console.log(time1);  // Sat Feb 20 2021 04:00:00 GMT+0530 (India Standard Time) { }
+```
+
+Similarly, if two arguments are passed, it represents year and month.
+
+```Javascript
+let time1 = new Date(2020, 1);
+console.log(time1);  // Sat Feb 20 2021 04:00:00 GMT+0530 (India Standard Time) { }
+```
+
+**Warning**
+
+If you pass only one argument, it is treated as milliseconds. Hence, you have to pass two arguments to use this date format.
+
+### AutoCorrection in Date Object
+
+When you assign out of range values in the Date object, it auto-corrects itself.
+
+```Javascript
+let date = new Date(2008, 0, 33);
+// Jan does not have 33 days
+console.log(date);  // Sat Feb 02 2008 00:00:00 GMT+0530 (India Standard Time) { }
+```
+
+33 days are auto corrected to 31 (jan) + 2 days in feb.
+
+### Instance Methods
+
+There are methods to access and set values like a year, month, etc. in the Date Object.
+
+| Method        | Description                                                                                                                         |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| now()         | Returns the numeric value corresponding to the current time (the number of milliseconds passed since January 1, 1970, 00:00:00 UTC) |
+| getFullYear() | Gets the year according to local time                                                                                               |
+| getMonth()    | Gets the month, from 0 to 11 according to local time                                                                                |
+| getDate()     | Gets the day of the month (1–31) according to local time                                                                            |
+| getDay()      | Gets the day of the week (0-6) according to local time                                                                              |
+| getHours()    | Gets the hour from 0 to 23 according to local time                                                                                  |
+| getMinutes    | Gets the minute from 0 to 59 according to local time                                                                                |
+| getUTCDate()  | Gets the day of the month (1–31) according to universal time                                                                        |
+| setFullYear() | Sets the full year according to local time                                                                                          |
+| setMonth()    | Sets the month according to local time                                                                                              |
+| setDate()     | Sets the day of the month according to local time                                                                                   |
+| setUTCDate()  | Sets the day of the month according to universal time                                                                               |
+
+```Javascript
+let date1 = new Date(1947, 7, 15, 1, 3, 15, 0);
+
+console.log(date1.getFullYear());  // 1947
+console.log(date1.getMonth());  // 7
+```
+
+#### Setting Date Values
+
+```Javascript
+let date1 = new Date(1947, 7, 15);
+date1.setYear(2021);
+date1.setDate(1);
+
+console.log(date1);  // Sun Aug 01 2021 00:00:00 GMT+0530 (India Standard Time) { }
+```
+
+# More Modern JS Concepts Part - 3
+
+## `this`
+
+The `this` is determined in three ways.
+
+- In Object methods, it refers to the object that is executing the current function.
+- In Regular functions, it refers to the window object.
+- In Arrow functions, it refers to the context in which the code is defined.
+
+### `this` in Object Methods
+
+```Javascript
+let car = {
+  color: "blue",
+  brand: "Audi",
+  start: function() {
+    console.log(this);  // Object { color: "blue", brand: "Audi", start: ƒ() }
+  }
+};
+
+car.start();
+```
+
+In the above example, this refers to the `car` object as it's executing the method `start`.
+
+### `this` in Regular Functions
+
+```Javascript
+function start() {
+  console.log(this);  // Window { }
+}
+start();
+```
+
+In the above example, `this` refers to the window object.
+
+### `this` in Arrow Functions
+
+In Arrow functions, this depends on two aspects:
+
+- When the code is defined
+- Context
+
+Arrow function `inherits` this from the context in which the code is defined.
+
+#### Object Methods
+
+```Javascript
+let car = {
+  color: "blue",
+  brand: "Audi",
+  start: () => {
+    console.log(this);  // Window { }
+  }
+};
+
+car.start();
+```
+
+**Arrow Functions with Callbacks**
+
+```Javascript
+let car = {
+  color: "blue",
+  brand: "Audi",
+  start: function() {
+    setTimeout(() => {
+      console.log(this);  // Object { color: "blue", brand: "Audi", start: ƒ() }
+    }, 1000);
+  }
+};
+
+car.start();
+```
+
+### `this` in Constructor Functions
+
+In Constructor Function, `this` refers to the instance object.
+
+```Javascript
+function Car(color, brand) {
+  this.color = color;
+  this.brand = brand;
+  this.start = function() {
+    console.log(this);  // Car { }
+  };
+}
+
+let car1 = new Car("blue", "Audi");
+car1.start();
+```
+
+In the above example, this refers to the object car1.
+
+#### Arrow Functions
+
+```Javascript
+function Car(color, brand) {
+  this.color = color;
+  this.brand = brand;
+  this.start = () => {
+    console.log(this);  // Car { }
+  };
+}
+
+let car1 = new Car("blue", "Audi");
+car1.start();
+```
+
+## Immutable and Mutable Values
+
+### Immutable
+
+All the primitive type values are immutable.
+
+- Number
+- String
+- Boolean
+- Symbol
+- Undefined, etc.
+
+```Javascript
+let x = 5;
+let y = x;
+y = 10;
+
+console.log(x);  // 5
+console.log(y);  // 10
+```
+
+### Mutable
+
+All the Objects are mutable.
+
+- Object
+- Array
+- Function
+
+```Javascript
+let x = { value: 5 };
+let y = x;
+let z = { value: 20 };
+
+y.value = 10;
+
+console.log(x);  // Object { value: 10 }
+console.log(y);  // Object { value: 10 }
+
+y = z;
+
+console.log(x);  // Object { value: 10 }
+console.log(y);  // Object { value: 20 }
+```
+
+## Declaring Variables
+
+In JavaScript, a variable can be declared in 3 ways.
+
+- Using let
+- Using const
+- Using var
+
+### let
+
+While declaring variables using let,
+
+- Initialization is not mandatory
+- Variables can be reassigned
+
+```Javascript
+let x;
+x = 10;
+
+console.log(x);  // 10
+
+x = 15;
+console.log(x);  // 15
+```
+
+### const
+
+While declaring variables using const,
+
+- Initialization is mandatory
+- Once a value is initialized, then it can't be reassigned
+
+Without Initialization:
+
+```Javascript
+const x;
+
+x = 7;  // SyntaxError {"Const declarations require an initialization value (1:21)"}
+```
+
+Reassignment
+
+```Javascript
+const x = 7;
+
+x = 9;  // TypeError {"Assignment to constant variable."}
+```
+
+#### Mutating Object properties
+
+```Javascript
+const car = {
+ color : "blue",
+ brand : "Audi"
+};
+car.color = "red";
+
+console.log(car.color);  // red
+```
+
+But objects can't be reassigned.
+
+```Javascript
+const car = {
+ color : "blue",
+ brand : "Audi"
+};
+car.color = "red";
+
+car = {};  // TypeError {"Assignment to constant variable."}
+```
