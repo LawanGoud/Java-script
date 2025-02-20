@@ -3724,3 +3724,1129 @@ car.color = "red";
 
 car = {};  // TypeError {"Assignment to constant variable."}
 ```
+
+# Prototypal Inheritance
+
+## Built-in Constructor Functions
+
+These are the built-in constructor functions provided by JavaScript.
+
+- function Array()
+- function Function()
+- function Promise()
+- function Object()
+- function String()
+- function Number(), etc.
+
+## Built-in Array Constructor Function
+
+### Default Properties and Methods
+
+Properties:
+
+- constructor
+- length
+- prototype, etc.
+
+Methods:
+
+- push()
+- pop()
+- shift()
+- splice()
+- unshift(), etc.
+
+### Creating an Array with the `new` Operator (Older way of writing)
+
+**Syntax:** `let myArray = new Array(item1, item2, ...);`
+
+```Javascript
+let myArray = new Array("a", 2, true);
+myArray.push("pen");
+
+console.log(myArray);  // Array (4)["a", 2, true, "pen"]
+console.log(myArray.length);  // 4
+```
+
+## Prototype Property
+
+The Prototype property will be `shared` across all the `instances` of their constructor function.
+
+### Accessing the Prototype of a Constructor Function
+
+```Javascript
+console.log(Array.prototype);
+```
+
+### Accessing the shared Prototype of an Instance
+
+```Javascript
+let myArray = new Array("a", 2, true);
+console.log(Object.getPrototypeOf(myArray));
+```
+
+### Prototypal Inheritance
+
+On calling the new() operator, all the properties and methods defined on the prototype will become accessible to the instance objects. This process is called Prototypal Inheritance.
+
+## Built-in Function Constructor Function
+
+### Default Properties and Methods
+
+**Properties:**
+
+- name
+- length
+- constructor
+- prototype, etc.
+
+**Methods:**
+
+- apply()
+- bind()
+- call()
+- toString(), etc.
+
+### Creating a Function with the new Operator (Older way of writing)
+
+**Syntax:** `let myFunction = new Function("param1, param2, ...", function body);`
+
+```Javascript
+let Car = new Function("color, brand",
+  `this.color = color;
+   this.brand = brand;
+   this.start = function() {
+     console.log("started");
+  };`);
+
+console.log(Function.prototype);
+```
+
+## Instance Specific and Prototype Properties
+
+### Prototype Properties/ Methods
+
+The Prototype Properties/ Methods are the properties or methods common across the instance objects.
+
+Examples:
+
+- calculateAge
+- displayGreetings
+- displayProfileDetails
+- calculateIncome
+
+#### Adding a Method to the prototype
+
+```Javascript
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+Person.prototype.displayFullName = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+let person1 = new Person("Virat", "Kohli");
+let person2 = new Person("Sachin", "Tendulkar");
+
+console.log(Object.getPrototypeOf(person1) === Object.getPrototypeOf(person2));
+```
+
+### Instance Specific Properties/ Methods
+
+The Instance Specific Properties/ Methods are the properties or methods specific to the instance object.
+
+Examples:
+
+- gender
+- yearOfBirth
+- friendsList
+- name
+
+```Javascript
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+Person.prototype.displayFullName = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+let person1 = new Person("Virat", "Kohli");
+console.log(Object.getOwnPropertyNames(person1));
+```
+
+# JS Classes
+
+## Class
+
+The `class` is a special type of function used for creating multiple objects.
+
+### Constructor Method
+
+The constructor method is a special method of a class for creating and initializing an object of that class.
+
+**Syntax**
+
+```Javascript
+class MyClass {
+  constructor(property1, property2) {
+    this.property1 = property1;
+    this.property2 = property2;
+  }
+  method1() { ... }
+  method2() { ... }
+}
+```
+
+#### Creating a Single Object
+
+**Syntax :**
+
+````Javascript
+class MyClass {
+  constructor(property1, property2) {
+    this.property1 = property1;
+    this.property2 = property2;
+  }
+  method1() { ... }
+  method2() { ... }
+}
+let myObject = new MyClass(property1, property2);```
+````
+
+```Javascript
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+ }
+ displayFullName() {
+   return this.firstName + " " + this.lastName;
+ }
+}
+let person1 = new Person("Virat", "Kohli");
+
+console.log(person1);  // Person {...}
+```
+
+#### Creating Multiple Objects
+
+```Javascript
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+let person1 = new Person("Virat", "Kohli");
+let person2 = new Person("Sachin", "Tendulkar");
+
+console.log(person1);  // Person {...}
+console.log(person2);  // Person {...}
+```
+
+## Prototype property of a Class
+
+```Javascript
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  displayFullName() {
+   return this.firstName + " " + this.lastName;
+  }
+}
+let person1 = new Person("Virat", "Kohli");
+
+console.log(Person.prototype);  // Person {...}
+```
+
+### Prototype of an Instance
+
+The Instance Prototype refers to the prototype object of the constructor function.
+
+```Javascript
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  displayFullName() {
+   return this.firstName + " " + this.lastName;
+  }
+}
+let person1 = new Person("Virat", "Kohli");
+
+console.log(Object.getPrototypeOf(person1));  // Person {...}
+```
+
+<b>Note :</b> The Type of a class is a function
+
+## Inheritance in JS Classes
+
+The Inheritance is a mechanism by which a class inherits methods and properties from another class.
+
+### Extends
+
+The `extends` keyword is used to inherit the methods and properties of the superclass.
+
+### Super
+
+Calling `super()` makes sure that `SuperClass constructor()` gets called and initializes the instance.
+
+**Syntax**
+
+```Javascript
+class SuperClass {
+}
+class SubClass extends SuperClass{
+  constructor(property1, property2){
+    super(property1);
+    this.property2 = property2;
+  }
+  method1() {  }
+}
+let myObject = new SubClass(property1, property2);
+```
+
+Here, `SubClass` inherits methods and properties from a `SuperClass`.
+
+### Method Overriding
+
+Here the constructor method is overridden. If we write the `SuperClass` methods in `SubClass`, it is called method overriding.
+
+**Syntax:**
+
+```Javascript
+class SuperClass {
+}
+class SubClass extends SuperClass{
+  constructor(property1, property2){
+    super(property1);
+    this.property2 = property2;
+  }
+}
+let myObject = new SubClass(property1, property2);
+```
+
+```Javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  eat() {
+    return `${this.name} is eating`;
+  }
+  makeSound() {
+    return `${this.name} is shouting`;
+  }
+}
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+  sniff() {
+    return `${this.name} is sniffing`;
+  }
+}
+class Cat extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+  knead() {
+    return `${this.name} is kneading`;
+  }
+}
+let animal1 = new Animal("gorilla");
+let someDog = new Dog("someDog", "German Shepherd");
+let persianCat = new Cat("someCat", "Persian Cat");
+
+console.log(animal1);  // Animal {...}
+console.log(animal1.eat());  // gorilla is eating
+
+console.log(someDog);  // Dog {...}
+console.log(someDog.eat());  // someDog is eating
+console.log(someDog.sniff());  // someDog is sniffing
+
+console.log(persianCat);  // Cat {...}
+console.log(persianCat.knead());  // someCat is kneading
+console.log(persianCat.eat());  // someCat is eating
+console.log(persianCat.makeSound());  // someCat is shouting
+```
+
+## this in Classes
+
+### Super Class
+
+In class, `this` refers to the instance object.
+
+```Javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+ }
+ eat() {
+   return this;
+ }
+ makeSound() {
+   return `${this.name} is shouting!`;
+ }
+}
+let animal1 = new Animal("dog");
+
+console.log(animal1.eat());  // Animal {...}
+```
+
+Here `this` refers to the `animal1`.
+
+### Sub Class
+
+```Javascript
+class Animal {
+    constructor(name) {
+    this.name = name;
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+  sniff() {
+    return this;
+  }
+}
+let dog = new Dog("dog", "german Shepherd");
+
+console.log(dog.sniff());  // Dog {...}
+```
+
+# JS Promises
+
+## Synchronous Execution
+
+**Example**
+
+```Javascript
+alert("First Line");
+alert("Second Line");
+alert("Third Line");
+```
+
+The code executes line by line. This behavior is called synchronous behavior, in JS alert works synchronously.
+
+## Asynchronous Execution
+
+```Javascript
+const url = "https://apis.ccbp.in/jokes/random";
+
+fetch(url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((jsonData) => {
+    //statement-1
+    console.log(jsonData); // Object{ value:"The computer tired when it got home because it had a hard drive" }
+  });
+
+//statement-2
+console.log("fetching done"); // fetching done
+```
+
+In the above example, the second statement won’t wait until the first statement execution. In JS, fetch() works asynchronously.
+
+## JS Promises
+
+- Promise is a way to handle Asynchronous operations.
+
+- A promise is an object that represents a result of operation that will be returned at some point in the future.
+
+```Javascript
+const url = "https://apis.ccbp.in/jokes/random";
+let responseObject = fetch(url);
+
+console.log(responseObject); // Promise{ [[PromiseStatus]]:pending, [[PromiseValue]]:undefined }
+console.log("fetching done"); // fetching done
+```
+
+<b>Note</b>
+A promise will be in any one of the three states:
+
+- Pending : Neither fulfilled nor rejected
+- Fulfilled : Operation completed successfully
+- Rejected : Operation failed
+
+### Resolved State
+
+When a Promise object is Resolved, the result is a value.
+
+```Javascript
+const url = "https://apis.ccbp.in/jokes/random";
+let responsePromise = fetch(url);
+
+responsePromise.then((response) => {
+  console.log(response); // Response{ … }
+});
+```
+
+### Rejected State
+
+Fetching a resource can be failed for various reasons like:
+
+- URL is spelled incorrectly
+- Server is taking too long to respond
+- Network failure error, etc.
+
+```Javascript
+const url = "https://a.ccbp.in/random";
+let responsePromise = fetch(url);
+
+responsePromise.then((response) => {
+  return response;
+});
+responsePromise.catch((error) => {
+  console.log(error); // TypeError{ "Failed to fetch" }
+});
+```
+
+### Promising Chaining
+
+Combining multiple .then()s or .catch()s to a single promise is called promise chaining.
+
+**Syntax:**
+
+```Javascript
+const url = "INCORRECT_RESOURCE_URL";
+let responsePromise = fetch(url);
+
+responsePromise
+  .then((response) => {
+    console.log(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+#### OnSuccess Callback returns Promise
+
+Here, log the response in JSON format.
+
+```Javascript
+const url = "RESOURCE_URL";
+let responsePromise = fetch(url);
+
+responsePromise.then((response) => {
+  console.log(response.json());
+});
+```
+
+#### Chaining OnSuccess Callback again
+
+```Javascript
+const url = "https://apis.ccbp.in/jokes/random";
+let responsePromise = fetch(url);
+
+responsePromise
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
+```
+
+### Fetch with Error Handling
+
+Check the behavior of code with valid and invalid URLs.
+
+```Javascript
+const url = "https://apis.ccbp.in/jokes/random";
+let responsePromise = fetch(url);
+
+responsePromise
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data); // Object { value: "They call it the PS4 because there are only 4 games worth playing!"
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+# JS Promises
+
+## Asynchronous JS Code Style
+
+There are two main types of asynchronous code style you'll come across in JavaScript:
+
+- Callback based
+
+  Example : `setTimeout()`, `setInterval()`
+
+- Promise based
+
+  Example : `fetch()`
+
+## Creating your own Promises
+
+Promises are the new style of async code that you'll see used in modern JavaScript.
+
+```Javascript
+const myPromise = new Promise((resolveFunction, rejectFunction) => {
+      //Async task
+});
+```
+
+In the above syntax:
+
+- The Promise constructor takes a function (an executor) that will be executed immediately and passes in two functions: resolve, which must be called when the Promise is resolved (passing a result), and reject when it is rejected (passing an error).
+- The executor is to be executed by the constructor, during the process of constructing the new Promise object.
+- resolveFunction is called on promise fulfilled.
+- rejectFunction is called on promise rejection.
+
+**Example**
+
+```Javascript
+const myPromise = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+  });
+};
+
+console.log(myPromise());
+```
+
+### Accessing Arguments from Resolve
+
+When `resolve()` is excuted, callback inside `then()` will be executed.
+
+```Javascript
+const myPromise = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Promise Resolved");
+    }, 1000);
+  });
+};
+
+myPromise().then((fromResolve) => {
+  console.log(fromResolve); // Promise Resolved
+});
+```
+
+### Accessing Arguments from Reject
+
+When `reject()` is excuted, callback inside `catch()` will be executed.
+
+```Javascript
+const myPromise = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject("Promise Rejected");
+    }, 2000);
+  });
+};
+
+myPromise()
+  .then((fromResolve) => {
+    console.log(fromResolve);
+  })
+  .catch((fromReject) => {
+    console.log(fromReject); // Promise Rejected
+  });
+```
+
+## Async/Await
+
+- The Async/Await is a modern way to consume promises.
+- The Await ensures processing completes before the next statement executes.
+
+**Syntax**
+
+```Javascript
+const myPromise = async () => {
+  let promiseObj1 = fetch(url1);
+  let response1 = await promiseObj1;
+  let promiseObj2 = fetch(url2);
+  let response2 = await promiseObj2;
+};
+
+myPromise();
+```
+
+<b>Note</b>
+
+- Use async keyword before the function only if it is performing async operations.
+- Should use await inside an async function only.
+
+### Fetch with Async and Await
+
+```Javascript
+const url = "https://apis.ccbp.in/jokes/random";
+
+const doNetworkCall = async () => {
+  const response = await fetch(url);
+  const jsonData = await response.json();
+  console.log(jsonData);
+};
+
+doNetworkCall();
+```
+
+### Error Handling with Async and Await
+
+```Javascript
+const url = "https://a.ccbp.in/jokes/random";
+
+const doNetworkCall = async () => {
+  try {
+    const response = await fetch(url);
+    const jsonData = await response.json();
+    console.log(jsonData);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+doNetworkCall();
+```
+
+### Async Function always returns Promise
+
+```Javascript
+const url = "https://apis.ccbp.in/jokes/random";
+
+const doNetworkCall = async () => {
+  const response = await fetch(url);
+  const jsonData = await response.json();
+  console.log(jsonData);
+};
+
+const asyncPromise = doNetworkCall();
+console.log(asyncPromise);
+```
+
+## String Manipulations
+
+There are methods and properties available to all strings in JavaScript.
+
+| String Methods                       | Functionality                     |
+| ------------------------------------ | --------------------------------- |
+| toUpperCase(), toLowerCase()         | Converts from one case to another |
+| includes(), startsWith(), endsWith() | Checks a part of the string       |
+| split()                              | Splits a string                   |
+| toString()                           | Converts number to a string       |
+| trim(), replace()                    | Updates a string                  |
+| concat(), slice(), substring()       | Combines & slices strings         |
+| indexOf()                            | Finds an index                    |
+
+### trim()
+
+The `trim()` method removes whitespace from both ends of a string.
+
+**Syntax :** `string.trim()`
+
+```Javascript
+const greeting = "   Hello world!  ";
+console.log(greeting);
+console.log(greeting.trim());
+```
+
+### slice()
+
+The `slice()` method extracts a section of a string and returns it as a new string, without modifying the original string.
+
+**Syntax :** `string.slice(start, end)`
+
+```Javascript
+const text = "The quick brown fox";
+console.log(text.slice(0, 3)); // The
+console.log(text.slice(2, 3)); // e
+```
+
+### toUpperCase()
+
+The `toUpperCase()` method converts a string to upper case letters.
+
+**Syntax :** `string.toUpperCase()`
+
+```Javascript
+const text = "The quick brown fox";
+console.log(text.toUpperCase()); // THE QUICK BROWN FOX
+```
+
+### toLowerCase()
+
+The `toLowerCase()` method converts a string to lower case letters.
+
+**Syntax :** `string.toLowerCase()`
+
+```Javascript
+const text = "Learn JavaScript";
+console.log(text.toLowerCase()); // learn javascript
+```
+
+### split()
+
+The `split()` method is used to split a string into an array of substrings and returns the new array.
+
+**Syntax :** `string.split(separator, limit)`
+
+```Javascript
+const str = "He-is-a-good-boy";
+const words = str.split("-");
+
+console.log(words); // ["He", "is", "a", "good", "boy"]
+```
+
+### replace()
+
+The `replace()` method searches a string for a specified value, or a regular expression, and returns a new string where the specified value is replaced.
+
+**Syntax :** `string.replace(specifiedvalue, newvalue)`
+
+```Javascript
+const str = "Football is a popular sport. Many countries play Football. Football tournaments are watched worldwide. Football fans are everywhere.";
+const words = str.replace("Football", "Soccer");
+
+console.log(words); // Soccer is a popular sport. Many countries play Football. Football tournaments are watched worldwide. Football fans are everywhere.
+```
+
+### includes()
+
+- The includes() method determines whether a string contains the characters of a specified string.
+
+- It returns true if the string contains the value, otherwise it returns false.
+
+**Syntax :** `string.includes(searchvalue, start)`
+
+```Javascript
+const str = "Learn 4.0 Technologies";
+const word = str.includes("Tech");
+const number = str.includes("5.0");
+
+console.log(word); // true
+console.log(number); // false
+```
+
+### concat()
+
+The `concat()` method is used to join two or more strings.
+
+**Syntax :** `string.concat(string1, string2, ..., stringX)`
+
+```Javascript
+const str1 = "Hello";
+const str2 = "World";
+console.log(str1.concat(str2)); // HelloWorld
+console.log(str1.concat(" Pavan", ". Have a nice day.")); // Hello Pavan. Have a nice day.
+```
+
+### indexOf()
+
+The `indexOf()` method returns the position of the first occurrence of a specified value in a string.
+
+**Syntax :** `string.indexOf(searchvalue, start)`
+
+```Javascript
+const str = "Building Global Startups";
+console.log(str.indexOf("Global")); // 9
+console.log(str.indexOf("up")); // 21
+```
+
+### startsWith()
+
+The `startsWith()` method determines whether a string begins with the characters of a specified string, returning true or false as appropriate.
+
+**Syntax :** `string.startsWith(searchvalue, start)`
+
+```Javascript
+const str = "World-class Products";
+console.log(str.startsWith("rld")); // false
+console.log(str.startsWith("World")); // true
+```
+
+### endsWith()
+
+The `endsWith()` method determines whether a string ends with the characters of a specified string, returning true or false as appropriate.
+
+**Syntax :** `string.endsWith(searchvalue, length)`
+
+```Javascript
+const str = "How are you?";
+console.log(str.endsWith("you?")); // true
+console.log(str.endsWith("re")); // false
+```
+
+### toString()
+
+The `toString()` method returns the value of a string object.
+
+**Syntax :** `string.toString()`
+
+```Javascript
+const number = 46;
+const newNumber = number.toString();
+
+console.log(newNumber); // 46
+console.log(typeof newNumber); // string
+```
+
+### substring()
+
+The `substring()` method returns the part of the string between the start and end indexes, or to the end of the string.
+
+**Syntax :** `string.substring(start, end)`
+
+```Javascript
+const str = "I am learning JavaScript";
+console.log(str.substring(2, 9)); // am lear
+console.log(str.substring(6)); // earning JavaScript
+```
+
+### Length
+
+The `length` property returns the length of a string (number of characters).
+
+**Syntax :** `string.length`
+
+```Javascript
+const str = "Upgrade to CCBP Tech 4.0 Intensive";
+console.log(str.length); // 34
+```
+
+# More JS Concepts
+
+## Scoping
+
+The Scope is the region of the code where a certain variable can be accessed.
+
+In JavaScript there are two types of scope:
+
+- Block scope
+- Global scope
+
+### Block Scope
+
+If a variable is declared with const or let within a curly brace ({}), then it is said to be defined in the Block Scope.
+
+- if..else
+- function (){}
+- switch
+- for..of, etc.
+
+```Javascript
+let age = 27;
+if (age > 18) {
+  let x = 0;
+  console.log(x); // 0
+}
+console.log(x); //  ReferenceError{"x is not defined"}
+```
+
+### Global Scope
+
+- If a variable is declared outside all functions and curly braces ({}), then it is said to be defined in the Global Scope.
+- When a variable declared with let or const is accessed, Javascript searches for the variable in the block scopes first followed by global scopes.
+
+```Javascript
+const x = 30;
+function myFunction() {
+  if (x > 18) {
+    console.log(x); // 30
+  }
+}
+
+myFunction();
+```
+
+# Hoisting
+
+## Function Declarations
+
+Hoisting is a JavaScript mechanism where function declarations are moved to the top of their scope before code execution.
+
+```Javascript
+let x = 15;
+let y = 10;
+let result = add(x, y);
+console.log(result); // 25
+
+function add(a, b) {
+  return a + b;
+}
+```
+
+## Function Expressions
+
+Function expressions in JavaScript are not hoisted.
+
+```Javascript
+myFunction();
+let myFunction = function () {
+  let x = 5;
+  console.log(x); // ReferenceError{"Cannot access 'myFunction' before initialization"}
+};
+```
+
+## Arrow Functions
+
+Arrow Functions in JavaScript are not hoisted.
+
+```Javascript
+myFunction();
+let myFunction = () => {
+  let x = 5;
+  console.log(x); // ReferenceError{"Cannot access 'myFunction' before initialization"}
+};
+```
+
+# More Array Methods
+
+The `map()`, `forEach()`, `filter()` and `reverse()` are some of the most commonly used array methods in JavaScript.
+
+### Map()
+
+1. The map() method creates a new array with the results of calling a function for every array element.
+2. The map() method calls the provided function once for each element in an array, in order.
+
+**Syntax :** `array.map(callback(currentValue, index, arr))`
+
+1. Here the callback is a function that is called for every element of array.
+2. currentValue is the value of the current element and index is the array index of the current element. Here index and arr are optional arguments.
+
+```Javascript
+const numbers = [1, 2, 3, 4];
+const result = numbers.map((number) => number * number);
+
+console.log(result); // [1, 4, 9, 16]
+```
+
+### forEach()
+
+The `forEach()` method executes a provided function once for each array element. It always returns undefined.
+
+**Syntax :** `array.forEach(callback(currentValue, index, arr))`
+
+Here index and arr are optional arguments.
+
+```Javascript
+let fruits = ["apple", "orange", "cherry"];
+
+fruits.forEach((fruit) => console.log(fruit));
+```
+
+### filter()
+
+1. The filter() method creates a new array filled with all elements that pass the test (provided as a function).
+
+2. A new array with the elements that pass the test will be returned. If no elements pass the test, an empty array will be returned.
+
+**Syntax :** `array.filter(function(currentValue, index, arr))`
+
+Here index and arr are optional arguments.
+
+```Javascript
+const numbers = [1, -2, 3, -4];
+const positiveNumbers = numbers.filter((number) => number > 0);
+
+console.log(positiveNumbers); // [1, 3]
+```
+
+### reduce()
+
+The `reduce()` method executes a reducer function (that you provide) on each element of the array, resulting in single output value.
+
+**Syntax :** `array.reduce(function(accumulator, currentValue, index, arr), initialValue)`
+
+Here accumulator is the initialValue or the previously returned value of the function and currentValue is the value of the current element, index and arr are optional arguments.
+
+```Javascript
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+console.log(array1.reduce(reducer)); // 10
+```
+
+### every()
+
+The `every()` method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+
+**Syntax :** `array.every(function(currentValue, index, arr))`
+
+Here index and arr are optional arguments.
+
+```Javascript
+let array1 = [32, 33, 16, 20];
+const result = array1.every((array1) => array1 < 40);
+
+console.log(result); // true
+```
+
+### some()
+
+The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+
+**Syntax :** `array.some(function(currentValue, index, arr))`
+
+Here index and arr are optional arguments.
+
+```Javascript
+const myAwesomeArray = ["a", "b", "c", "d", "e"];
+const result = myAwesomeArray.some((alphabet) => alphabet === "d");
+
+console.log(result); // true
+```
+
+### reverse()
+
+The `reverse()` method reverses the order of the elements in an array.The first array element becomes the last, and the last array element becomes the first.
+
+**Syntax :** `array.reverse()`
+
+```Javascript
+const myArray = ["iBHubs", "CyberEye", "ProYuga"];
+const reversedArray = myArray.reverse();
+
+console.log(reversedArray); // ["ProYuga", "CyberEye", "iBHubs"]
+```
+
+### flat()
+
+The `flat()` method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+
+**Syntax :** `let newArray = arr.flat([depth]);`
+
+```Javascript
+const arr1 = [0, 1, 2, [3, 4]];
+const arr2 = [0, 1, 2, [[[3, 4]]]];
+
+console.log(arr1.flat()); // [ 0,1,2,3,4 ]
+console.log(arr2.flat(2)); // [0, 1, 2, [3, 4]]
+```
+
+## Mutable & Immutable methods
+
+Mutable methods will change the original array and Immutable methods won't change the original array.
+
+| Mutable methods | Immutable methods |
+| --------------- | ----------------- |
+| shift()         | map()             |
+| unshift()       | filter()          |
+| push()          | reduce()          |
+| pop()           | forEach()         |
+| sort()          | slice()           |
+| reverse()       | join()            |
+| splice(), etc.  | some(), etc.      |
